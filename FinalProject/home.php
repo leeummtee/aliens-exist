@@ -17,7 +17,7 @@
     <!-- logo in the top left -->
     <div class="topnav">
       <div class="topnav-left">
-        <a href="projects.html">
+        <a href="home.php">
           <span class="logo"> Logo </span>
         </a>
       </div>

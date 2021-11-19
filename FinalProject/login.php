@@ -29,7 +29,7 @@ if(isset($_POST['login']))
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>Login Page</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <link href="css/styles.css" rel="stylesheet">
+    <link href="css/styling.css" rel="stylesheet">
 </head>
 <body id="login">
   <nav>
@@ -38,6 +38,7 @@ if(isset($_POST['login']))
       <div class="topnav-left">
         <a href="projects.html">
           <span class="logo"> Logo </span>
+          <!-- <span> <img class="logo" src="imgs/logo.png" alt="ufo logo"> </span> -->
         </a>
       </div>
     </div>
@@ -61,25 +62,41 @@ if(isset($_POST['login']))
   </nav>
 
  <section class="container-login">
-   <div class="block-login-img">
+   <!-- <div class="block-login-img">
      <img src="imgs/alien.png" alt="ufo">
-   </div>
+   </div> -->
 
-   <div class="block-login-fields">
-    <form action = "login.php" method = "POST">
-      <h1> Log in. The truth awaits. </h1>
+    <div class="block-login">
+      <form action = "login.php" method = "POST">
+        <div class="container-login-logo">
+          <img class="logo-img" src="imgs/logo.png" alt="ufo logo">
+        </div>
+        <h1> Log in. The truth awaits. </h1>
         <p>
-          <input class="input-text" type = "text" id ="user" name  = "user" placeholder="enter username"/>
+          <input class="input-text" type = "text" id ="user" name  = "user" placeholder="Enter username"/>
         </p>
         <p>
-          <input class="input-text" type = "password" id ="pass" name  = "pass" placeholder="enter password"/>
+          <input class="input-text" type = "password" id ="pass" name  = "pass" placeholder="Enter password"/>
         </p>
-        <!--<label>
-          <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
-        </label> <br> <br> -->
-        <input type =  "button" value = "Log In" id = "login"/>
-      </form>
+
+        <div class="container-login-buttons">
+          <input class="button-form" type =  "button" value = "Log In" id = "login"/>
+          <input class="button-form" type =  "button" value = "Sign Up" id = "sign up"/>
+        </div>
+        <div class="container-login-buttons">
+          <input type="checkbox" checked="checked" name="remember"> Remember me
+        </div>
     </div>
+
+        <!-- <label>
+          <input type="checkbox" checked="checked" name="remember"> Remember me
+        </label> -->
+      </form>
+  </section>
+
+  <!-- <section class="container-login">
+    <input class="button-form" type =  "button" value = "Log In" id = "login"/>
+  </section> -->
 
     <script type = "text/javascript">
       $(document).ready(function (){
@@ -109,7 +126,6 @@ if(isset($_POST['login']))
       });
     });
     </script>
-  </section>
 
   <footer class="section-divider-footer">
     <div class="container-footer">
