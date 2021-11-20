@@ -10,7 +10,7 @@ if(isset($_POST['login']))
 {
     $user = $_POST['username'];
     $pass = $_POST['password'];
-    $result = $conn -> query("SELECT username FROM login WHERE username = '$user' AND password = '$pass'");
+    $result = $conn -> query("SELECT username FROM member WHERE username = '$user' AND password = '$pass'");
 
     if($result -> num_rows > 0)
     {
