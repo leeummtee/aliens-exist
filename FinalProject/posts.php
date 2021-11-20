@@ -3,8 +3,8 @@
 <label for="sort-list">Sort by:</label>
 
 <select name="sort-list" id="sort-list">
-  <option value="dateposted_oldest"  <?php echo (isset($_POST['dateposted_oldest']) && $_POST['dateposted_oldest'] == 'Oldest to newest') ? 'selected' : ''; ?>>Oldest to newest</option>
   <option value="dateposted_newest" <?php echo (isset($_POST['dateposted_newest']) && $_POST['dateposted_newest'] == 'Newest to oldest') ? 'selected' : ''; ?>>Newest to oldest</option>
+  <option value="dateposted_oldest"  <?php echo (isset($_POST['dateposted_oldest']) && $_POST['dateposted_oldest'] == 'Oldest to newest') ? 'selected' : ''; ?>>Oldest to newest</option>
   <option value="most_popular" <?php echo (isset($_POST['most_popular']) && $_POST['most_popular'] == 'Most popular') ? 'selected' : ''; ?>>Most popular</option>
   <option value="least_popular" <?php echo (isset($_POST['least_popular']) && $_POST['least_popular'] == 'Least popular') ? 'selected' : ''; ?>>Least popular</option>
 </select>
