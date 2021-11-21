@@ -3,7 +3,7 @@ include_once("database.php");
 session_start();
 if(isset($_SESSION['isLoggedIn']))
 {
-  header('Location: test.php');
+  header('Location: posts.php');
   exit();
 }
 if(isset($_POST['login']))
@@ -25,13 +25,12 @@ if(isset($_POST['login']))
 ?>
 <html>
 <head>
-<<<<<<< HEAD
     <title>Login Page</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
 <body>
 
-<h1>Login</h1>
+<!--<h1>Login</h1>
   <form action = "login.php" method = "POST">
       <p>
         <label> Username: </label> <input type = "text" id ="user" name  = "user" placeholder="enter username"/>
@@ -40,12 +39,11 @@ if(isset($_POST['login']))
         <label> Password: </label>
         <input type = "password" id ="pass" name  = "pass" placeholder="enter password"/>
       </p>
-      <!--<label>
+      <label>
         <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
-      </label> <br> <br> -->
-      <input type =  "button" value = "login" id = "login"/>
-    </form>
-=======
+      </label> <br> <br> <input type =  "button" value = "login" id = "login"/>
+    <input type =  "button" value = "login" id = "login"/>
+    </form>-->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>Login Page</title>
@@ -101,7 +99,8 @@ if(isset($_POST['login']))
         </p>
 
         <div class="container-login-buttons">
-          <input class="button-form" type =  "button" value = "Log In" id = "login"/>
+
+          <input class="button-form" type =  "button" value = "Login" id = "login"/>
           <input class="button-form" type =  "button" value = "Sign Up" id = "sign up"/>
         </div>
         <div class="container-login-buttons">
@@ -119,14 +118,13 @@ if(isset($_POST['login']))
     <input class="button-form" type =  "button" value = "Log In" id = "login"/>
   </section> -->
 
->>>>>>> main
     <script type = "text/javascript">
       $(document).ready(function (){
         $("#login").click(function(){
         var user = $("#user").val();
         var pass = $("#pass").val();
-        if(user == "" || pass == "")
-          alert('Please check your inputs.');
+        //if(user == "" || pass == "")
+          //alert('Please check your inputs.');
         $.ajax(
           {
             url:'login.php',
@@ -140,7 +138,7 @@ if(isset($_POST['login']))
             {
               $("#response").html(response);
               if(response.indexOf('success') >= 0)
-                window.location = 'hidden.php';
+                window.location = 'posts.php';
             },
             dataType: 'text'
           }
@@ -148,8 +146,6 @@ if(isset($_POST['login']))
       });
     });
     </script>
-<<<<<<< HEAD
-=======
 
   <footer class="section-divider-footer">
     <div class="container-footer">
@@ -159,6 +155,5 @@ if(isset($_POST['login']))
       <a class="link" href="#"> github </a>
     </div>
   </footer>
->>>>>>> main
 </body>
 </html>

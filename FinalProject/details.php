@@ -9,9 +9,10 @@ function userValidation($name)
   return $name;
 }
 
-$var_value = $_SESSION['entryid'];
-echo $var_value;
-$sql = "SELECT * FROM entries WHERE entryid =" . $var_value;
+$entry_id = $_SESSION['entryid'];
+$user = $_SESSION['username'];
+echo $entry_id;
+$sql = "SELECT * FROM entries WHERE entryid =" . $entry_id;
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     // output data of each row
@@ -33,5 +34,9 @@ if ($result->num_rows > 0) {
     } else {
     echo "0 results";
 }
-echo "<a href=" . "'posts.php'" . "name=" . "'link1'> Back to previous posts" . "</a><br>";
+echo "<a href=" . "'?page=1'" . "name=" . "'link1'> Back to previous posts" . "</a><br>";
+if(isset($_GET['page'])){
+  header('Location: posts.php');
+}
 ?>
+<a href='logout.php'>LOG OUT</a><br>

@@ -84,9 +84,13 @@ function checkCircle()
 
 function checkOther()
 {
+  if($_SESSION['test']){
+    $_SESSION['test'] = false;
+    return true;
+  }
   if(empty($_POST['other'])){
     return "";
-  } else {
+  } else{
     return true;
   }
 }
@@ -265,9 +269,9 @@ function printURLs($page,$max)
     echo "<a href=" . "'?page=0'><<</a><br>";
   }
   if(isset($_GET['page'])){
-    //echo "uh";
     $_SESSION['page'] = $_GET['page'];
     header( "Location: posts.php" );
   }
 }
 ?>
+<a href='logout.php'>LOG OUT</a><br>
