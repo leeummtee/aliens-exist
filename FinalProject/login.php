@@ -25,25 +25,10 @@ if(isset($_POST['login']))
 ?>
 <html>
 <head>
-    <title>Login Page</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <title>Login Page</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
 <body>
-
-<!--<h1>Login</h1>
-  <form action = "login.php" method = "POST">
-      <p>
-        <label> Username: </label> <input type = "text" id ="user" name  = "user" placeholder="enter username"/>
-      </p>
-      <p>
-        <label> Password: </label>
-        <input type = "password" id ="pass" name  = "pass" placeholder="enter password"/>
-      </p>
-      <label>
-        <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
-      </label> <br> <br> <input type =  "button" value = "login" id = "login"/>
-    <input type =  "button" value = "login" id = "login"/>
-    </form>-->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>Login Page</title>

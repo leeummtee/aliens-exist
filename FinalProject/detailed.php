@@ -1,23 +1,22 @@
-<!DOCTYPE HTML>
-<!--I used P02 as reference -->
-<html lang="en">
-
+<html>
 <head>
+  <title>Login Page</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</head>
+<body>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <title> Home </title>
+  <title>Detailed</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <link href="css/styling.css" rel="stylesheet">
-  <link href="css/queries.css" rel="stylesheet">
-  <!-- linking the fade animations that must be loaded in header -->
-  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
 
-<body>
+<body id="login">
   <nav>
     <!-- logo in the top left -->
     <div class="topnav">
       <div class="topnav-left">
-        <a href="home.php">
+        <a href="projects.html">
           <span class="logo"> Logo </span>
         </a>
       </div>
@@ -41,24 +40,35 @@
     </div>
   </nav>
 
-  <section class="container-header">
-    <div class="block">
-      <header class="header-text-detailed">
-        <h1 id="project-header"> Aliens Exist Brah </h1>
-        <p> Dem flying saucers really be out der my guys. Stay safe out there. </p>
-        <!-- down arrow reference: https://www.w3schools.com/howto/howto_css_arrows.asp -->
-        <p><i class="arrow down"></i></p>
-      </header>
-    </div>
-  </section>
+ <section class="container-login">
+    <div class="block-login">
+      <form action = "detailed.php" method = "POST">
+        <div class="container-login-logo">
+          <img class="logo-img" src="imgs/logo.png" alt="ufo logo">
+        </div>
 
-  <section class="container-for-you">
-      <a href="#"><img class="home-listing" src="imgs/mike.jpeg" alt="ufo"></a>
-      <a href="#"><img class="home-listing" src="imgs/mike.jpeg" alt="ufo"></a>
-      <a href="#"><img class="home-listing" src="imgs/mike.jpeg" alt="ufo"></a>
-      <a href="#"><img class="home-listing" src="imgs/mike.jpeg" alt="ufo"></a>
-      <a href="#"><img class="home-listing" src="imgs/mike.jpeg" alt="ufo"></a>
-      <a href="#"><img class="home-listing" src="imgs/mike.jpeg" alt="ufo"></a>
+        <h1> UFOs spotted in da area of Surrey... </h1>
+        <h4> Author: </h4> <p> anonymous </p>
+        <h4> Country: </h4> <p> US </p>
+        <h4> City: </h4> <p> vanleer </p>
+        <h4> Shape: </h4> <p> cylinder </p>
+        <h4> Latitude: </h4> <p> 36.235 </p>
+        <h4> Longitude: </h4> <p> -87.4438889 </p>
+        <h4> Date and Time of Occurance: </h4> <p> 2009-02-22 20:19:00 </p>
+        <h4> Duration (secs): </h4> <p> 2700 </p>
+        <h4> Duration (hrs and mins): </h4> <p> 45+ minutes </p>
+        <h4> Description: </h4> <p> Bright light in atmosphere miles away. </p>
+
+        <p>
+          <input class="comment-text" type = "password" id ="pass" name  = "pass" placeholder="Enter Comment"/>
+        </p>
+
+        <div class="container-login-buttons">
+          <input class="button-form" type =  "button" value = "Post" id = "post"/>
+        </div>
+
+    </div>
+      </form>
   </section>
 
   <footer class="section-divider-footer">
@@ -69,10 +79,6 @@
       <a class="link" href="#"> github </a>
     </div>
   </footer>
-
-  <!-- linking the animation library  -->
-  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-
-  <!-- linking javascript file -->
-  <script src="js/main.js"></script>
 </body>
+
+</html>
