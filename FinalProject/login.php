@@ -85,7 +85,7 @@ if(isset($_POST['login']))
           <input class="button-form" type =  "button" value = "Login" id = "login"/>
           <input class="button-form" type =  "button" value = "Sign Up" id = "sign up"/>
         </div>
-        
+
         <div class="container-login-buttons">
           <input type="checkbox" checked="checked" name="remember"> Remember me
         </div>
