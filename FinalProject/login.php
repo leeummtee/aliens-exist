@@ -27,8 +27,6 @@ if(isset($_POST['login']))
 <head>
   <title>Login Page</title>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-</head>
-<body>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>Login Page</title>
@@ -84,10 +82,10 @@ if(isset($_POST['login']))
         </p>
 
         <div class="container-login-buttons">
-
           <input class="button-form" type =  "button" value = "Login" id = "login"/>
           <input class="button-form" type =  "button" value = "Sign Up" id = "sign up"/>
         </div>
+        
         <div class="container-login-buttons">
           <input type="checkbox" checked="checked" name="remember"> Remember me
         </div>
