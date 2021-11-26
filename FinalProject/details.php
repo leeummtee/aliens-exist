@@ -52,7 +52,6 @@ if ($conn->query($sqlInsert) === TRUE) {
 } else {
   echo "Error: " . $sqlInsert . "<br>" . $conn->error;
 }
->>>>>>> main
 
 ?>
 <html>
