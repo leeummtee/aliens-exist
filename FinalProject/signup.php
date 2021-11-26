@@ -4,93 +4,120 @@
 	<script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
 </head>
 <body>
-  <form action="signup.php">
-    <div class="container">
+  <form action="" method="post">
       <h1>Sign Up</h1>
       <hr>
 
       <label for="lastname"><b>First Name</b></label>
-      <input type="text" placeholder="Enter First Name" name="firstname"> <br> <br>
+      <input type="text" placeholder="Enter First Name" name="firstname" value= "<?php firstName() ?>"> <br> <br>
 
       <label for="lastname"><b>Last Name</b></label>
-      <input type="text" placeholder="Enter Last Name" name="lastname"> <br> <br>
+      <input type="text" placeholder="Enter Last Name" name="lastname" value= "<?php lastName() ?>"> <br> <br>
 
       <label for="user"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="user"> <br> <br>
+      <input type="text" placeholder="Enter Username" name="user" value= "<?php userName() ?>"> <br> <br>
+
+			<label for="phoneNum"><b>Phone Number: </b></label>
+      <input type="text" placeholder="Enter Phone Number" name="phoneNum" value= "<?php phoneNum() ?>"> <br> <br>
 
       <label for="email"><b>Email</b></label>
-      <input type="text" placeholder="Enter Email" name="email"> <br> <br>
+      <input type="text" placeholder="Enter Email" name="email" value= "<?php email() ?>"> <br> <br>
 
       <label for="pass"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw"> <br> <br>
+      <input type="password" placeholder="Enter Password" name="psw" value= "<?php psw() ?>"> <br> <br>
 
       <label for="pass-repeat"><b>Repeat Password</b></label>
-      <input type="password" placeholder="Repeat Password" name="psw-repeat"><br> <br>
+      <input type="password" placeholder="Repeat Password" name="psw-repeat" value= "<?php pswRepeat() ?>"><br> <br>
 
-      <label>
-        <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
-      </label>
-
-      <div class="clearfix">
-        <!--- <button type="button" class="cancelbtn">Cancel</button> --->
-        <input type =  "button" value = "signup" id = "signup"/>
-      </div>
+      <input type="submit" value="signup" name = "signup"/>
     </div>
   </form>
-  <h1>Login</h1>
-    <form action = "login.php" method = "POST">
-        <p>
-          <label> First Name: </label> <input type = "text" id ="user" name  = "user" placeholder="enter username"/>
-        </p>
-        <p>
-          <label> Password: </label>
-          <input type = "password" id ="pass" name  = "pass" placeholder="enter password"/>
-        </p>
-        <!--<label>
-          <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
-        </label> <br> <br> -->
-        <input type =  "button" value = "login" id = "login"/>
-      </form>
-      <script type = "text/javascript">
-        $(document).ready(function (){
-          $('#signup').click(function(){
-            //e.preventDefault();
-            var firstname = $("#firstname").val();
-            var lastname = $("#lastname").val();
-            var user = $("#user").val();
-            var email = $("#email").val();
-            var pass = $("#psw").val();
-            var pass_repeat = $("#psw-repeat").val();
-            if(email == "" || firstname == "")
-                alert('Please check your inputs.');
-
-          $.ajax(
-            {
-              type: "POST",
-              url: "signup.php",
-              dataType: "json",
-              data: {
-                firstname: firstname,
-                lastname: lastname,
-                user: user,
-                email: email,
-                pass: pass,
-                pass_repeat: pass_repeat,
-                message: message
-              }
-
-              success: function (response)
-              {
-                console.log(response);
-              }
-            }
-          )
-        });
-      });
-      </script>
 </body>
 </html>
 
 <?php
+include_once("database.php");
+session_start();
+function firstName() {
+  if (isset($_POST['firstname'])){
+		return $_POST['firstname'];
+	}
+	return "";
+}
+echo firstName();
+function lastName() {
+  if (isset($_POST['lastname'])){
+		return $_POST['lastname'];
+	}
+	return "";
+}
 
+function userName() {
+  if (isset($_POST['user'])){
+		return $_POST['user'];
+	}
+	return "";
+}
+
+function phoneNum() {
+  if (isset($_POST['phoneNum'])){
+		return $_POST['phoneNum'];
+	}
+	return "";
+}
+
+function email() {
+  if (isset($_POST['email'])){
+		return $_POST['email'];
+	}
+	return "";
+}
+
+function psw() {
+  if (isset($_POST['psw'])){
+		return $_POST['psw'];
+	}
+	return "";
+}
+
+function pswRepeat() {
+  if (isset($_POST['psw-repeat']))
+		return $_POST['psw-repeat'];
+	return "";
+}
+
+function valid()
+{
+	$count = 0;
+	if(userName())
+		$count++;
+	if(firstName())
+		$count++;
+	if(lastName())
+		$count++;
+	if(phoneNum())
+		$count++;
+	if(email())
+		$count++;
+	if(psw())
+		$count++;
+	return $count;
+}
+echo valid();
+if(valid() >= 6){
+$signup = "INSERT INTO member(username, password, last_name, phone_num, first_name, email) VALUES(
+'" . userName() . "',
+'" . pswRepeat() . "',
+'" . lastName() . "',
+'" . phoneNum() . "',
+'" . firstName() . "',
+'" . email() . "')";
+
+if ($conn->query($signup) === TRUE) {
+  echo "New record created successfully";
+	
+} else {
+  echo "Error: " . $signup . "<br>" . $conn->error;
+}
+}
 ?>

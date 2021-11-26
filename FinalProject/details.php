@@ -135,29 +135,6 @@ if ($conn->query($sqlInsert) === TRUE) {
     $commentid = $_POST['commentid'];
     $entryid = $_POST['entryid'];
 
-    // 'uhhh', '2008-11-11 13:23:44', '3'
-
-    //inserting into comments table
-    // $sqlInsert = "INSERT INTO comment (description, timestamp, upvotes)
-    // VALUES" . "(" . $description . "," . "1949-10-10 20:30:00". "," . "0" . ")";
-    //
-    // if ($conn->query($sqlInsert) === TRUE) {
-    //   echo "New comment created successfully";
-    // } else {
-    //   echo "Error: " . $sqlInsert . "<br>" . $conn->error;
-    // }
-    // echo "<br>";
-
-    //inserting into attached table
-    // $sqlInsertAttached = "INSERT INTO attached (commentid, entryid)
-    // VALUES" . "(" . $commentid . "," . $entryid . ")";
-
-    // if ($conn->query($sqlInsertAttached) === TRUE) {
-    //   echo "Inserted commentid and entryid into table successfully";
-    // } else {
-    //   echo "Error: " . $sqlInsertAttached . "<br>" . $conn->error;
-    // }
-
     echo "<a class='button-form' href=" . "'?page=1'" . "name=" . "'link1'> Back to previous posts" . "</a><br>";
     if(isset($_GET['page'])){
       header('Location: posts.php');
@@ -167,18 +144,6 @@ if ($conn->query($sqlInsert) === TRUE) {
   </section>
 
 
-  <!-- <div class="block-login">
-    <form action = "details.php" method = "POST">
-      <div class="container-login-logo">
-        <img class="logo-img" src="imgs/logo.png" alt="ufo logo">
-      </div>
-      <p>
-        <input class="input-text" type = "text" id ="description" name  = "description" placeholder="Enter description"/>
-      </p>
-      <div class="container-login-buttons">
-        <input class="button-form" type =  "button" value = "Submit" id = "submit"/>
-      </div>
-  </div> -->
 </body>
 
   <br>
