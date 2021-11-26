@@ -115,7 +115,11 @@ $signup = "INSERT INTO member(username, password, last_name, phone_num, first_na
 
 if ($conn->query($signup) === TRUE) {
   echo "New record created successfully";
+<<<<<<< HEAD
 	
+=======
+	$_SESSION['username'] = userName();
+>>>>>>> main
 } else {
   echo "Error: " . $signup . "<br>" . $conn->error;
 }
