@@ -105,8 +105,9 @@ function valid()
 }
 echo valid();
 if(valid() >= 6){
-$signup = "INSERT INTO member(username, password, last_name, phone_num, first_name, email) VALUES(
+$signup = "INSERT INTO member(username, post_count, password, last_name, phone_num, first_name, email) VALUES(
 '" . userName() . "',
+'0',
 '" . pswRepeat() . "',
 '" . lastName() . "',
 '" . phoneNum() . "',
@@ -116,6 +117,7 @@ $signup = "INSERT INTO member(username, password, last_name, phone_num, first_na
 if ($conn->query($signup) === TRUE) {
   echo "New record created successfully";
 	$_SESSION['username'] = userName();
+	header( "Location: posts.php" );
 } else {
   echo "Error: " . $signup . "<br>" . $conn->error;
 }
