@@ -13,8 +13,7 @@ $entry_id = $_SESSION['entryid'];
 $user = $_SESSION['username'];
 echo $entry_id;
 $sql = "SELECT * FROM entries WHERE entryid =" . $entry_id;
-<<<<<<< HEAD
-=======
+
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     // output data of each row
@@ -52,7 +51,6 @@ if ($conn->query($sqlInsert) === TRUE) {
 } else {
   echo "Error: " . $sqlInsert . "<br>" . $conn->error;
 }
->>>>>>> main
 
 ?>
 <html>
