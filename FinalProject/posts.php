@@ -1,6 +1,6 @@
 <html>
 <form action="" method="post">
-<input type="text" name="query" />
+<input type="text" name="query" value= "<?php if (isset($_POST['query'])) echo $_POST['query'];?>"/>
 <input type="submit" value="Search" name = "search"/>
 <label for="sort-list">Sort by:</label>
 <select name="sort-list" id="sort-list">
@@ -21,9 +21,7 @@ Shape:
 <input type="checkbox" id="circle" name="circle" value="circle" <?php if(isset($_POST['circle'])) echo 'checked="checked"'; ?>>
 <label for="circle">Circle</label><br>
 <input type="checkbox" id="other" name="other" value="other" <?php if(isset($_POST['other'])) echo 'checked="checked"'; ?>>
-<label for="other">Other</label><br>
-
-<input type="submit" name="button" value="Submit"/></form>
+<label for="other">Other</label><br></form>
 <?php
 include_once("database.php");
 session_start();
@@ -31,7 +29,7 @@ session_start();
 if(!isset($_SESSION['page'])){
   $_SESSION['page'] = 0;
 }
-echo "page" . $_SESSION['page'];
+//echo "page" . $_SESSION['page'];
 
 $sql = "SELECT * FROM entries";
 
@@ -146,7 +144,7 @@ function howManyShapes()
     if($count > 0) {
       for ($x = 0; $x < $count; $x++) {
         if($x == 0){
-          $sql_statement .= "shape != '" . $other[$x] . "'";
+          $sql_statement .= "(shape != '" . $other[$x] . "'";
         }
         else{
           $sql_statement .= " AND shape != '" . $other[$x] . "'";
@@ -161,9 +159,11 @@ function howManyShapes()
   {
     for ($x = 0; $x < $counter; $x++) {
       if($x == 0){
-        $sql_statement .= "shape = '" . $shapes_include[$x] . "'";
-      }
-      else{
+        $sql_statement .= "(shape = '" . $shapes_include[$x] . "'";
+      }else if($x == ($counter -1))
+      {
+        $sql_statement .= " OR shape = '" . $shapes_include[$x] . "')";
+      }else{
         $sql_statement .= " OR shape = '" . $shapes_include[$x] . "'";
       }
     }
@@ -175,6 +175,16 @@ function howManyShapes()
   return $sql_statement;
 }
 $sql .= howManyShapes();
+
+if(isset($_POST['search']) && isset($_POST['query']))
+{
+  $query = $_POST['query'];
+  if(strpos($sql, 'WHERE') == false){
+  $sql .= " WHERE (comment LIKE '%" .$query. "%') OR (shape LIKE '%".$query."%')";
+} else {
+  $sql .= " AND ((comment LIKE '%" .$query. "%') OR (shape LIKE '%".$query."%'))";
+}
+}
 
 if(isset($_POST['sort-list']))
   $sql .= whichSelectOption($_POST['sort-list']);
@@ -198,14 +208,14 @@ $result_records = $conn->query($entry_records);
 if ($result_records->num_rows > 0) {
   while($row = $result_records->fetch_assoc()) {
     $num_of_entry_records = $row["num_of_records"];
-    echo $num_of_entry_records;
+  //  echo $num_of_entry_records;
   }
 }
 $max_page = $num_of_entry_records / $per_page;
 
 //$_SESSION['sqlstatement'] = $sql;
 $sql .= " LIMIT " . $per_page . "  OFFSET " . $offset;
-echo $sql;
+  //echo $sql;
 $result = $conn->query($sql);
 $count = 0;
 if ($result->num_rows > 0) {
@@ -224,44 +234,6 @@ if ($result->num_rows > 0) {
     }
 } else {
     echo "0 results";
-}
-if (isset($_POST['search'])) {
-  echo "0 results";
-    // Your code that you want to execute
-    $query = $_POST['query'];
-    $min_length = 3;
-    	// you can set minimum length of the query if you want
-echo $query;
-    	if(strlen($query) >= $min_length){ // if query length is more or equal minimum length then
-
-    		$query = htmlspecialchars($query);
-    		// changes characters used in html to their equivalents, for example: < to &gt;
-
-    		//$query = mysql_real_escape_string($query);
-    		// makes sure nobody uses SQL injection
-        $testing = "SELECT * FROM entries WHERE (comment LIKE '%" .$query. "%') OR (shape LIKE '%".$query."%')";
-        $raw_results = $conn->query($sql);
-        if ($raw_results->num_rows > 0) {
-          $count = 0;
-    			// $results = mysql_fetch_array($raw_results) puts data from database into array, while it's valid it does the loop
-          while($row = $raw_results->fetch_assoc()) {
-            if($count < 10){
-              echo "<br><br><a href=" . "'?link=" . $row["entryid"] . "'" . "<h1>Date Posted:" . $row["dateposted"]."</h1></a><br>";
-              echo "Author: " . userValidation($row["username"])."<br><br>";
-              echo $count;
-              if(isset($_GET['link'])){
-                //echo "uh";
-                $_SESSION['entryid'] = $_GET['link'];
-                header( "Location: details.php" );
-              }
-              $count++;
-
-    				// posts results gotten from database(title and text) you can also show id ($results['id'])
-    			}
-
-    		}
-      }
-}
 }
 
 printURLs($page, $max_page);
