@@ -103,7 +103,7 @@ function valid()
 		$count++;
 	return $count;
 }
-echo valid();
+//echo valid();
 if(valid() >= 6){
 $signup = "INSERT INTO member(username, post_count, password, last_name, phone_num, first_name, email) VALUES(
 '" . userName() . "',
