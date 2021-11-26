@@ -38,5 +38,18 @@ echo "<a href=" . "'?page=1'" . "name=" . "'link1'> Back to previous posts" . "<
 if(isset($_GET['page'])){
   header('Location: posts.php');
 }
+$sqlInsert = "INSERT INTO attached (entryid)
+VALUES" . "(" .  $entry_id . ")";
+$sqlInsert = "INSERT INTO comment (description, timestamp, upvotes)
+VALUES ('uhhh', '2008-11-11 13:23:44', '3')";
+$resultSql = $conn->query($sqlInsert);
+$sqlInsert = "INSERT INTO comment (description, timestamp, upvotes)
+VALUES ($description, $timestamp, $upvotes)";
+if ($conn->query($sqlInsert) === TRUE) {
+  echo "New comment created successfully";
+} else {
+  echo "Error: " . $sqlInsert . "<br>" . $conn->error;
+}
+
 ?>
 <a href='logout.php'>LOG OUT</a><br>

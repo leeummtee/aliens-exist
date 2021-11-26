@@ -1,7 +1,8 @@
 <html>
 <form action="" method="post">
+<input type="text" name="query" />
+<input type="submit" value="Search" name = "search"/>
 <label for="sort-list">Sort by:</label>
-
 <select name="sort-list" id="sort-list">
   <option value="dateposted_newest" <?php echo (isset($_POST['dateposted_newest']) && $_POST['dateposted_newest'] == 'Newest to oldest') ? 'selected' : ''; ?>>Newest to oldest</option>
   <option value="dateposted_oldest"  <?php echo (isset($_POST['dateposted_oldest']) && $_POST['dateposted_oldest'] == 'Oldest to newest') ? 'selected' : ''; ?>>Oldest to newest</option>
@@ -84,10 +85,10 @@ function checkCircle()
 
 function checkOther()
 {
-  if($_SESSION['test']){
-    $_SESSION['test'] = false;
-    return true;
-  }
+  //if($_SESSION['test']){
+  //  $_SESSION['test'] = false;
+    //return true;
+  //}
   if(empty($_POST['other'])){
     return "";
   } else{
@@ -223,6 +224,44 @@ if ($result->num_rows > 0) {
     }
 } else {
     echo "0 results";
+}
+if (isset($_POST['search'])) {
+  echo "0 results";
+    // Your code that you want to execute
+    $query = $_POST['query'];
+    $min_length = 3;
+    	// you can set minimum length of the query if you want
+echo $query;
+    	if(strlen($query) >= $min_length){ // if query length is more or equal minimum length then
+
+    		$query = htmlspecialchars($query);
+    		// changes characters used in html to their equivalents, for example: < to &gt;
+
+    		//$query = mysql_real_escape_string($query);
+    		// makes sure nobody uses SQL injection
+        $testing = "SELECT * FROM entries WHERE (comment LIKE '%" .$query. "%') OR (shape LIKE '%".$query."%')";
+        $raw_results = $conn->query($sql);
+        if ($raw_results->num_rows > 0) {
+          $count = 0;
+    			// $results = mysql_fetch_array($raw_results) puts data from database into array, while it's valid it does the loop
+          while($row = $raw_results->fetch_assoc()) {
+            if($count < 10){
+              echo "<br><br><a href=" . "'?link=" . $row["entryid"] . "'" . "<h1>Date Posted:" . $row["dateposted"]."</h1></a><br>";
+              echo "Author: " . userValidation($row["username"])."<br><br>";
+              echo $count;
+              if(isset($_GET['link'])){
+                //echo "uh";
+                $_SESSION['entryid'] = $_GET['link'];
+                header( "Location: details.php" );
+              }
+              $count++;
+
+    				// posts results gotten from database(title and text) you can also show id ($results['id'])
+    			}
+
+    		}
+      }
+}
 }
 
 printURLs($page, $max_page);
