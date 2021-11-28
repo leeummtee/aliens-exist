@@ -16,7 +16,7 @@
     <!-- logo in the top left -->
     <div class="topnav">
       <div class="topnav-left">
-        <a href="projects.html">
+        <a href="home.php">
           <span class="logo"> Logo </span>
         </a>
       </div>
@@ -27,16 +27,13 @@
     <button class="icon-right-justified" onclick="openNav()">&#9776;</button>
     <div id="mySidenav" class="sidenav inactive">
       <a href="javascript:void(0)" role="button" class="closebtn" aria-label="close navigation" onclick="closeNav()">&times;</a>
-      <a href="contact.html">contact</a>
-      <a href="about.html">about</a>
+      <a href="login.php">login</a>
+      <a href="signup.php">sign up</a>
+      <a href="posts.php">posts</a>
+      <a href="home.php">home</a>
+      <a href="logout.php">logout</a>
 
-      <!-- drop down reference from https://stackoverflow.com/questions/35579569/hide-show-menu-onclick-javascript -->
-      <button id="menu" class="dropbtn" onclick="toggleMenu()"> projects <i class="small-arrow down"> </i></button>
-      <div id="menu-box" class="drop-content">
-        <a href="#">login</a>
-        <a href="#">register</a>
-        <a href="#">home</a>
-      </div>
+
     </div>
   </nav>
 

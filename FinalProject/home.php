@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <title> Home </title>
   <link href="css/styling.css" rel="stylesheet">
-  <link href="css/queries.css" rel="stylesheet">
+  <!-- <link href="css/queries.css" rel="stylesheet"> -->
   <!-- linking the fade animations that must be loaded in header -->
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
@@ -18,7 +18,7 @@
     <div class="topnav">
       <div class="topnav-left">
         <a href="home.php">
-          <span class="logo"> Logo </span>
+          <img class="logo-img-nav" src="imgs/logo.png" alt="ufo logo">
         </a>
       </div>
     </div>
@@ -28,23 +28,19 @@
     <button class="icon-right-justified" onclick="openNav()">&#9776;</button>
     <div id="mySidenav" class="sidenav inactive">
       <a href="javascript:void(0)" role="button" class="closebtn" aria-label="close navigation" onclick="closeNav()">&times;</a>
-      <a href="contact.html">contact</a>
-      <a href="about.html">about</a>
+      <a href="login.php">login</a>
+      <a href="signup.php">sign up</a>
+      <a href="posts.php">posts</a>
+      <a href="home.php">home</a>
+      <a href="logout.php">logout</a>
 
-      <!-- drop down reference from https://stackoverflow.com/questions/35579569/hide-show-menu-onclick-javascript -->
-      <button id="menu" class="dropbtn" onclick="toggleMenu()"> projects <i class="small-arrow down"> </i></button>
-      <div id="menu-box" class="drop-content">
-        <a href="#">login</a>
-        <a href="#">register</a>
-        <a href="#">home</a>
-      </div>
     </div>
   </nav>
 
   <section class="container-header">
     <div class="block">
       <header class="header-text-detailed">
-        <h1 id="project-header"> Aliens Exist Brah </h1>
+        <h1 id="project-header"> UFO encounters for you.</h1>
         <p> Dem flying saucers really be out der my guys. Stay safe out there. </p>
         <!-- down arrow reference: https://www.w3schools.com/howto/howto_css_arrows.asp -->
         <p><i class="arrow down"></i></p>
@@ -64,9 +60,9 @@
   <footer class="section-divider-footer">
     <div class="container-footer">
       <p> ©2021 - Group2 | </p>
-      <a class="link" href="#"> citations </a>
-      <a class="link" href="#"> database </a>
-      <a class="link" href="#"> github </a>
+      <a class="link" href="login.php"> login </a>
+      <a class="link" href="signup.php"> sign up </a>
+      <a class="link" href="posts.php"> posts </a>
     </div>
   </footer>
 

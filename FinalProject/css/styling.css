@@ -29,6 +29,118 @@
   justify-content: center;
 } */
 
+/*the container must be positioned relative:*/
+/* .custom-select {
+  position: relative;
+  font-family: Arial;
+} */
+
+/* .custom-select select {
+  display: none;
+  /*hide original SELECT element:*/
+/* }  */
+
+/* .select-selected {
+  background-color: DodgerBlue;
+} */
+
+/*style the arrow inside the select element:*/
+/* .select-selected:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+} */
+
+/*point the arrow upwards when the select box is open (active):*/
+/* .select-selected.select-arrow-active:after {
+  border-color: transparent transparent #fff transparent;
+  top: 7px;
+} */
+
+/*style the items (options), including the selected item:*/
+/* .select-items div,.select-selected {
+  color: #ffffff;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+  user-select: none;
+} */
+
+/*style items (options):*/
+/* .select-items {
+  position: absolute;
+  background-color: DodgerBlue;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+} */
+
+/*hide the items when the select box is closed:*/
+/* .select-hide {
+  display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
+} */
+
+.padding-detailed {
+  padding-top: 5rem;
+}
+
+.test {
+  margin-left: -2rem;
+}
+
+.sort{
+  margin-left: 2rem;
+}
+
+.padding {
+  margin-bottom:2.3rem;
+}
+
+.search {
+  margin-bottom: 0rem;
+  /* margin-left: 1rem; */
+}
+
+.posts-sort {
+  padding: 0.5rem;
+}
+
+
+
+.container-search {
+  padding-top: 10rem;
+  display: flex;
+  justify-content:center;
+  /* margin-left: -5rem;
+  margin-right: -5rem; */
+}
+
+.logo-img-nav {
+  height: auto;
+  width: auto;
+  max-width: 3rem;
+  max-height: 3rem;
+}
+
+.logo-img-nav-details {
+  height: auto;
+  width: auto;
+  max-width: 3rem;
+  max-height: 3rem;
+  margin-top: -1.5rem;
+}
+
 #login {
   /* background-color: #303037; */
 }
@@ -64,6 +176,24 @@
   max-height: 7rem;
 }
 
+.block-checkboxes-2 {
+  align-content: center;
+  padding-right: 2rem;
+  padding-left: 2rem;}
+
+.block-checkboxes {
+  align-content: center;
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+
+.block-checkboxes-padded {
+  align-content: center;
+  padding-right: 1rem;
+  padding-left: 1rem;
+
+}
+
 .block-login {
   align-content: center;
   padding-right: 3rem;
@@ -73,17 +203,37 @@
   border-style: solid;
 }
 
-.block-login {
+.container-signup {
+  padding-top: 10rem;
+  padding-left: 5rem;
+  padding-right: 5rem;
+  display: flex;
+  justify-content:center;
+  /* margin-left: -5rem;
+  margin-right: -5rem; */
+}
+
+
+.block-signup {
   align-content: center;
-  padding-right: 3rem;
-  padding-left: 3rem;
+  padding-right: 8rem;
+  padding-left: 8rem;
   padding-top: 3rem;
   border-color: #BFBFBF;
   border-style: solid;
 }
 
 .container-login {
-  padding-top: 15rem;
+  padding-top: 10rem;
+  display: flex;
+  justify-content:center;
+  /* margin-left: -5rem;
+  margin-right: -5rem; */
+}
+
+.container-posts {
+  padding-top: 1rem;
+  padding-bottom;
   display: flex;
   justify-content:center;
   /* margin-left: -5rem;
@@ -182,8 +332,8 @@
   display: inline-block;
   padding: 0.5rem;
   font-size: 1.3rem;
-  // color: white;
-  color: #D5FFCE;
+  color: white;
+  /* color: #D5FFCE; */
   font-family: 'Nunito', sans-serif;
   text-decoration: none;
   // border: 2px solid white;
@@ -192,10 +342,10 @@
 }
 
 .button-nav:hover {
-  // color: #808080;
-  // background-color: #d6d6d6;
-  color: #95731C;
-  background-color: #D5FFCE;
+  color: #808080;
+  background-color: #d6d6d6;
+  /* color: #95731C;
+  background-color: #D5FFCE; */
 }
 
 .button-nav:focus {
@@ -203,7 +353,7 @@
   border: 3px solid #D5FFCE;
 }
 
-/* Styling for form buttons. Reference from https://www.tyssendesign.com.au/articles/css/styling-form-buttons/ */
+/* Styling for form xs. Reference from https://www.tyssendesign.com.au/articles/css/styling-form-buttons/ */
 .button-form {
   font-family: 'Nunito', sans-serif;
   font-size:1rem;
@@ -243,6 +393,24 @@
 }
 
 .input-text:focus {
+  background: #e0e0e0;
+  border-color: #d6d6d6;
+  outline-color: #d6d6d6;
+}
+
+.input-desc {
+  background: #ededed;
+  border-radius: 10px;
+  /* margin-bottom: 1rem; */
+  width: 100%;
+  height: 8rem;
+}
+
+.input-desc:hover {
+  background: #808080;
+}
+
+.input-desc:focus {
   background: #e0e0e0;
   border-color: #d6d6d6;
   outline-color: #d6d6d6;
@@ -474,7 +642,7 @@ transition-duration: 0.5s;
 /* logo in the top left */
 .topnav-left {
   float: left;
-  padding-left: 5rem;
+  padding-left: 3rem;
   padding-top: 1.5rem;
 }
 

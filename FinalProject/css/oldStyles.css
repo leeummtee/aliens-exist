@@ -33,6 +33,14 @@
   /* background-color: #303037; */
 }
 
+.container-search {
+  padding-top: 15rem;
+  display: flex;
+  justify-content:center;
+  /* margin-left: -5rem;
+  margin-right: -5rem; */
+}
+
 .comment-text {
   background: #ededed;
   border-radius: 10px;

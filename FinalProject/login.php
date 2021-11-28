@@ -33,13 +33,14 @@ if(isset($_POST['login']))
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <link href="css/styling.css" rel="stylesheet">
 </head>
+
 <body id="login">
   <nav>
     <!-- logo in the top left -->
     <div class="topnav">
       <div class="topnav-left">
-        <a href="projects.html">
-          <span class="logo"> Logo </span>
+        <a href="home.php">
+          <img class="logo-img-nav" src="imgs/logo.png" alt="ufo logo">
           <!-- <span> <img class="logo" src="imgs/logo.png" alt="ufo logo"> </span> -->
         </a>
       </div>
@@ -50,24 +51,15 @@ if(isset($_POST['login']))
     <button class="icon-right-justified" onclick="openNav()">&#9776;</button>
     <div id="mySidenav" class="sidenav inactive">
       <a href="javascript:void(0)" role="button" class="closebtn" aria-label="close navigation" onclick="closeNav()">&times;</a>
-      <a href="contact.html">contact</a>
-      <a href="about.html">about</a>
+      <a href="login.php">login</a>
+      <a href="signup.php">sign up</a>
+      <a href="posts.php">posts</a>
+      <a href="home.php">home</a>
+      <a href="logout.php">logout</a>
 
-      <!-- drop down reference from https://stackoverflow.com/questions/35579569/hide-show-menu-onclick-javascript -->
-      <button id="menu" class="dropbtn" onclick="toggleMenu()"> projects <i class="small-arrow down"> </i></button>
-      <div id="menu-box" class="drop-content">
-        <a href="#">login</a>
-        <a href="#">register</a>
-        <a href="#">home</a>
-      </div>
-    </div>
   </nav>
 
  <section class="container-login">
-   <!-- <div class="block-login-img">
-     <img src="imgs/alien.png" alt="ufo">
-   </div> -->
-
     <div class="block-login">
       <form action = "login.php" method = "POST">
         <div class="container-login-logo">
@@ -83,7 +75,8 @@ if(isset($_POST['login']))
 
         <div class="container-login-buttons">
           <input class="button-form" type =  "button" value = "Login" id = "login"/>
-          <input class="button-form" type =  "button" value = "Sign Up" id = "sign up"/>
+          <input href="signup.php" class="button-form" type =  "button" value = "Sign Up" id = "sign up"/>
+          <!-- <a href="signup.php" class="button-form" type =  "button" value = "Sign Up" id = "sign up"/> -->
         </div>
 
         <div class="container-login-buttons">
@@ -133,10 +126,13 @@ if(isset($_POST['login']))
   <footer class="section-divider-footer">
     <div class="container-footer">
       <p> ©2021 - Group2 | </p>
-      <a class="link" href="#"> citations </a>
-      <a class="link" href="#"> database </a>
-      <a class="link" href="#"> github </a>
+      <a class="link" href="login.php"> login </a>
+      <a class="link" href="signup.php"> sign up </a>
+      <a class="link" href="posts.php"> posts </a>
     </div>
   </footer>
+
+  <!-- linking javascript file -->
+  <script src="js/main.js"></script>
 </body>
 </html>
