@@ -46,10 +46,7 @@
 
 			<label for="phoneNum"><b>Country of Encounter: </b></label>
       <input class="input-text" type="text" placeholder="Country of Encounter" name="phoneNum" value= "<?php phoneNum() ?>"> <br> <br>
-
-      <label for="email"><b>UFO Shape:</b></label>
-      <input class="input-text" type="text" placeholder="Enter Email" name="email" value= "<?php email() ?>"> <br> <br>
-
+			
       <label for="pass"><b>Duration of Encounter:</b></label>
       <input class="input-text" type="password" placeholder="Duration of Encounter" name="psw" value= "<?php psw() ?>"> <br> <br>
 
