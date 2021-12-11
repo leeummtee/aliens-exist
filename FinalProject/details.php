@@ -59,7 +59,6 @@
     }
 
     if(isset($_POST['comment_desc']))
-    echo "yo";
 
     if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] == 1 && isset($_POST['comment_desc']))
     {

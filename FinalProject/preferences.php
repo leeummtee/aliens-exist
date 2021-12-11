@@ -1,3 +1,232 @@
+<?php
+include_once("database.php");
+session_start();
+
+function city() {
+  if (isset($_POST['city'])){
+		return $_POST['city'];
+	}
+	return "";
+}
+
+function country() {
+  if (isset($_POST['country'])){
+		return $_POST['country'];
+	}
+	return "";
+}
+
+function checkDisk()
+{
+  if(empty($_POST['disk'])){
+    return "";
+  } else {
+    return true;
+  }
+}
+
+function checkFireball()
+{
+  if(empty($_POST['fireball'])){
+    return "";
+  } else {
+    return true;
+  }
+}
+
+function checkTriangle()
+{
+  if(empty($_POST['triangle'])){
+    return "";
+  } else {
+    return true;
+  }
+}
+
+function checkCircle()
+{
+  if(empty($_POST['circle'])){
+    return "";
+  } else {
+    return true;
+  }
+}
+
+function checkOther()
+{
+  if(empty($_POST['other'])){
+    return "";
+  } else{
+    return true;
+  }
+}
+
+function upvotes()
+{
+  if(empty($_POST['upvotes'])){
+    return false;
+  } else{
+    return true;
+  }
+}
+
+
+function howManyShapes()
+{
+  $shapes_include = array();
+  $sql_statement = " WHERE ";
+  $other = array();
+  $counter = 0;
+
+  if(checkFireball())
+  {
+    $shapes_include[$counter] = "fireball";
+    $counter++;
+  }
+
+  if(checkDisk())
+  {
+    $shapes_include[$counter] = "disk";
+    $counter++;
+  }
+  if(checkTriangle())
+  {
+    $shapes_include[$counter] = "triangle";
+    $counter++;
+  }
+  if(checkCircle())
+  {
+    $shapes_include[$counter] = "circle";
+    $counter++;
+  }
+  if(checkOther())
+  {
+    $count = 0;
+    if(checkFireball() == ""){
+      $other[$count] = "fireball";
+      $count++;
+    }
+    if(checkDisk() == ""){
+      $other[$count] = "disk";
+      $count++;
+    }
+    if(checkTriangle() == ""){
+      $other[$count] = "triangle";
+      $count++;
+    }
+    if(checkCircle() == ""){
+      $other[$count] = "circle";
+      $count++;
+    }
+    if($count > 0) {
+      for ($x = 0; $x < $count; $x++) {
+        if($x == 0){
+          $sql_statement .= "(shape != '" . $other[$x] . "'";
+        }
+        else{
+          $sql_statement .= " AND shape != '" . $other[$x] . "'";
+        }
+      }
+      if($counter > 0)
+        $sql_statement .= " AND ";
+    }
+  }
+
+  if($counter > 0)
+    {
+      for ($x = 0; $x < $counter; $x++) {
+        if($x == 0){
+          $sql_statement .= "(shape = '" . $shapes_include[$x] . "'";
+        }else if($x == ($counter -1))
+        {
+          $sql_statement .= " OR shape = '" . $shapes_include[$x] . "')";
+        }else{
+          $sql_statement .= " OR shape = '" . $shapes_include[$x] . "'";
+        }
+      }
+    }
+    return $sql_statement;
+  }
+
+function hasPref()
+{
+
+}
+if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] == 1)
+{
+  $user = $_SESSION['username'];
+  $stmt = $conn->prepare("SELECT EXISTS(
+         SELECT *
+         FROM set_pref
+         WHERE username = ?)");
+  $stmt->bind_param("s", $user);
+  $stmt->execute();
+  $result = $stmt->get_result();
+  $prefExists = "0";
+  while ($row = $result->fetch_array()) {
+      foreach ($row as $r) {
+          if($r == 0){
+            $prefExists = "0";
+          }
+          else {
+            $prefExists = "1";
+          }
+      }
+  }
+
+  if($prefExists == "1")
+  {
+      $user = $_SESSION['username'];
+    $stmt2 = $conn->prepare("SELECT p.preference_id
+    FROM preferences p INNER JOIN set_pref sp ON p.preference_id = sp.preference_id
+    WHERE username =  ?");
+    $stmt2->bind_param("s", $user);
+    $stmt2->execute();
+    $preference_id;
+    $result = $stmt2->get_result();
+    while ($row = $result->fetch_array()) {
+        foreach ($row as $r) {
+          $preference_id = $r;
+        }
+      }
+  $country = country();
+  $city = city();
+  $upvotes = upvotes();
+  $shapes = howManyShapes();
+  $update = "UPDATE preferences SET ";
+
+  $stmt2 = $conn->prepare("UPDATE preferences SET
+    country = ?, city = ?, shape = ?, upvotes = ?
+    WHERE preference_id = ?");
+  $stmt2->bind_param("sssss", $country, $city, $shapes, $upvotes, $preference_id);
+  $stmt2->execute();
+  print_r($stmt2->error_list);
+  } else {
+    $user = $_SESSION['username'];
+    $country = country();
+    $city = city();
+    $upvotes = upvotes();
+    $shapes = howManyShapes();
+    echo $user . "</br>";
+    echo $country . "</br>";
+    echo $city . "</br>";
+    echo $upvotes . "</br>";
+    echo $shapes . "</br>";
+
+    $stmt2 = $conn->prepare("INSERT INTO preferences(country, city, shape, upvotes) VALUES (?, ?, ?, ?)");
+    $stmt2->bind_param("ssss", $country, $city, $shapes, $upvotes);
+    $stmt2->execute();
+    print_r($stmt2->error_list);
+    $pref_id = $conn->insert_id;
+
+    $stmt3 = $conn->prepare("INSERT INTO set_pref(username, preference_id) VALUES (?, ?)");
+    $stmt3 ->bind_param("ss", $user, $pref_id);
+    $stmt3 ->execute();
+    print_r($stmt3->error_list);
+  }
+}
+?>
+
 <html>
 <head>
 	<title>Preferences</title>
@@ -11,7 +240,6 @@
 			<div class="topnav-left">
 				<a href="home.php">
 					<img class="logo-img-nav" src="imgs/logo.png" alt="ufo logo">
-					<!-- <span> <img class="logo" src="imgs/logo.png" alt="ufo logo"> </span> -->
 				</a>
 			</div>
 		</div>
@@ -39,31 +267,39 @@
 				<img class="logo-img" src="imgs/logo.png" alt="ufo logo">
 			</div>
 
-      <h1>Sign up. Stay informed. </h1>
+      <h1> Set Preferences </h1>
+      <label for="city"><b>City: </b></label>
+      <input class="input-text" type="text" placeholder="City of Encounter" name="city" value= "<?php echo city(); //if(isset($_POST['city'])) echo $_POST['city']; ?>"> <br> <br>
 
-      <label for="lastname"><b>First Name</b></label>
-      <input class="input-text" type="text" placeholder="Enter First Name" name="firstname" value= "<?php firstName() ?>"> <br> <br>
+			<label for="country"><b>Country: </b></label>
+      <input class="input-text" type="text" placeholder="Country of Encounter" name="country" value= "<?php echo country(); ?>"> <br> <br>
 
-      <label for="lastname"><b>Last Name</b></label>
-      <input class="input-text" type="text" placeholder="Enter Last Name" name="lastname" value= "<?php lastName() ?>"> <br> <br>
 
-      <label for="user"><b>Username</b></label>
-      <input class="input-text" type="text" placeholder="Enter Username" name="user" value= "<?php userName() ?>"> <br> <br>
+				<div class="block-checkboxes">
+					<p class="search">Ufo Shape:</p>
+					<input type="checkbox" id="fireball" name="fireball" value="fireball" <?php if(isset($_POST['fireball'])) echo 'checked="checked"'; ?>>
+					<label for="fireball">Fireball</label><br>
+					<input type="checkbox" id="disk" name="disk" value="disk"  <?php if(isset($_POST['disk'])) echo 'checked="checked"'; ?>>
+					<label for="disk">Disk</label><br>
+					<input type="checkbox" id="triangle" name="triangle" value="triangle" <?php if(isset($_POST['triangle'])) echo 'checked="checked"'; ?>>
+					<label for="triangle">Triangle</label><br>
+					<input type="checkbox" id="circle" name="circle" value="circle" <?php if(isset($_POST['circle'])) echo 'checked="checked"'; ?>>
+					<label for="circle">Circle</label><br>
+					<input type="checkbox" id="other" name="other" value="other" <?php if(isset($_POST['other'])) echo 'checked="checked"'; ?>>
+					<label for="other">Other</label><br>
+					<!-- <label class="posts-sort" for="sort-list">Sort by:</label> -->
+				</div>
 
-			<label for="phoneNum"><b>Phone Number: </b></label>
-      <input class="input-text" type="text" placeholder="Enter Phone Number" name="phoneNum" value= "<?php phoneNum() ?>"> <br> <br>
-
-      <label for="email"><b>Email</b></label>
-      <input class="input-text" type="text" placeholder="Enter Email" name="email" value= "<?php email() ?>"> <br> <br>
-
-      <label for="pass"><b>Password</b></label>
-      <input class="input-text" type="password" placeholder="Enter Password" name="psw" value= "<?php psw() ?>"> <br> <br>
-
-      <label for="pass-repeat"><b>Repeat Password</b></label>
-      <input class="input-text" type="password" placeholder="Repeat Password" name="psw-repeat" value= "<?php pswRepeat() ?>"><br> <br>
-
+      <div class="block-checkboxes">
+        <p class="search">UpVotes:</p>
+        <input type="checkbox" id="upvotes" name="upvotes" value="upvotes" <?php if(isset($_POST['fireball'])) echo 'checked="checked"'; ?>>
+        <label for="upvotes"></label><br>
+      </div>
 			<div class="container-login-buttons">
-      	<input class="button-form" type="submit" value="Sign Up" name = "signup"/>
+				<br>
+				<div class="test">
+					<input class="button-form" type="submit" value="Set" name = "setpref"/>
+				</div>
 			</div>
 
     </div>
