@@ -91,6 +91,60 @@
   background-color: rgba(0, 0, 0, 0.1);
 } */
 
+.container-posts {
+  margin-top: -5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.container-posts a {
+  font-size: 1.5rem;
+}
+
+.container-posts input {
+  margin-left: -0.05rem;
+}
+
+.block-posts {
+  /* flex-grow: 0 100%; */
+  /* flex: 0 0 50%; */
+  overflow: hidden;
+  padding-bottom: 5rem;
+}
+
+.block-posts:nth-of-type(even) {
+  padding-top: 15rem;
+  padding-left: 2rem;
+  /* padding-left: 1rem; */
+}
+
+/* making sure there are only 2 divs per row */
+@media screen and (min-width: 1850px) {
+  .block-posts:nth-of-type(even) {
+    padding-top: 15rem;
+    padding-left: 2rem;
+    padding-right: 10rem;
+  }
+}
+
+@media screen and (min-width: 2000px) {
+  .block-posts:nth-of-type(even) {
+    padding-top: 15rem;
+    padding-left: 2rem;
+    padding-right: 15rem;
+  }
+}
+
+.block-posts-text {
+  flex-grow: 0 100%;
+  flex: 0 0 50%;
+  padding-top: 15rem;
+  padding-left: 2rem;
+  padding-right: 10rem;
+  overflow: hidden;
+}
+
 .padding-detailed {
   padding-top: 5rem;
 }

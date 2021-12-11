@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <title> Home </title>
-  <link href="css/styling.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
   <!-- <link href="css/queries.css" rel="stylesheet"> -->
   <!-- linking the fade animations that must be loaded in header -->
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />

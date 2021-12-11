@@ -4,9 +4,9 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-      <title>Login Page</title>
+      <title>Details Page</title>
       <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-      <link href="css/styling.css" rel="stylesheet">
+      <link href="css/styles.css" rel="stylesheet">
   </head>
 
   <body>
@@ -33,8 +33,8 @@
         <a href="logout.php">logout</a>
 
       </div>
-    </nav>
 
+    </nav>
     <section class="padding-detailed">
 
     <?php
@@ -49,7 +49,37 @@
     }
 
     $entry_id = $_SESSION['entryid'];
-    $user = $_SESSION['username'];
+
+    if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] == 1 && isset($_POST["comment_desc"]))
+    {
+      $user = $_SESSION['username'];
+
+      $stmt = $conn->prepare("INSERT INTO comment(description) VALUES (?)");
+      $stmt->bind_param("s", $description);
+      $description = $_POST["comment_desc"];
+      $stmt->execute();
+
+      $comment_id = $conn->insert_id;
+      $stmt2 = $conn->prepare("INSERT INTO post_comment(username, commentid) VALUES (?, ?)");
+      $stmt2->bind_param("si", $user, $comment_id);
+      $stmt2->execute();
+
+      $stmt3 = $conn->prepare("INSERT INTO attached(entryid, commentid) VALUES (?, ?)");
+      $stmt3->bind_param("si", $entry_id, $comment_id);
+      $stmt3->execute();
+
+      $stmt4 = $conn->prepare("UPDATE member
+        SET post_count = post_count + 1
+        WHERE username = ?");
+      $stmt4->bind_param("s", $user);
+      $stmt4 ->execute();
+
+
+      //UPDATE member
+      //SET post_count = post_count + 1
+      //WHERE username = 'a';
+    //  echo mysqli_insert_id();
+    }
     // echo $entry_id;
     $sql = "SELECT * FROM entries WHERE entryid =" . $entry_id;
 
@@ -69,27 +99,37 @@
             echo "Duration (secs): " . $row["duration_seconds"]."<br>";
             echo "Duration (hrs and mins): " . $row["duration_hrs_mins"]."<br>";
             echo "Description: " . $row["comment"]."<br>";
-
             }
         } else {
         echo "0 results";
     }
+
+    $sql2 = "SELECT * FROM attached a
+    INNER JOIN comment c
+    ON a.commentid = c.commentid
+    INNER JOIN post_comment pc
+    ON c.commentid = pc.commentid
+    WHERE entryid =" . $entry_id;
+
+    $result = $conn->query($sql2);
+    if ($result->num_rows > 0) {
+        // output data of each row
+        while($row = $result->fetch_assoc()) {
+          echo "<br> Time Posted:" . $row["timestamp"]."<br>";
+          echo "Upvotes:" . $row["upvotes"]."<br>";
+          echo "User:" . $row["username"]."<br>";
+          echo "Description:" . $row["username"]."<br>";
+        }
+      }
+      else {
+        echo "No comments currently";
+      }
+
     echo "<a href=" . "'?page=1'" . "name=" . "'link1'> Back to previous posts" . "</a><br>";
     if(isset($_GET['page'])){
       header('Location: posts.php');
     }
-    $sqlInsert = "INSERT INTO attached (entryid)
-    VALUES" . "(" .  $entry_id . ")";
-    $sqlInsert = "INSERT INTO comment (description, timestamp, upvotes)
-    VALUES ('uhhh', '2008-11-11 13:23:44', '3')";
-    $resultSql = $conn->query($sqlInsert);
-    $sqlInsert = "INSERT INTO comment (description, timestamp, upvotes)
-    VALUES ($description, $timestamp, $upvotes)";
-    if ($conn->query($sqlInsert) === TRUE) {
-      echo "New comment created successfully";
-    } else {
-      // echo "Error: " . $sqlInsert . "<br>" . $conn->error;
-    }
+
 
     ?>
   </section>
@@ -141,7 +181,13 @@
     //   header('Location: posts.php');
     // }
   ?>
-
+  <form action = "details.php" method = "POST">
+  <p>
+    <input class="comment-text" type = "text" id ="comment_desc" name  = "comment_desc" placeholder="Enter Comment"/>
+  </p>
+    <input class="button-form" type="submit" value="post" name = "post"/>
+  </nav>
+  </form>
   </section>
 
   <!-- linking javascript file -->

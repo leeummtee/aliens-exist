@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <link href="css/styling.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
 </head>
 <body>
   <nav>
@@ -69,8 +69,8 @@
       <a href="posts.php">posts</a>
       <a href="home.php">home</a>
       <a href="logout.php">logout</a>
-
     </div>
+  </section>
   </nav>
 
 <?php
@@ -269,12 +269,23 @@ $sql .= " LIMIT " . $per_page . "  OFFSET " . $offset;
   //echo $sql;
 $result = $conn->query($sql);
 $count = 0;
+
+echo '<section class="container-posts">';
 if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
       if($count < 10){
+        // img
+        echo '<div class="block-posts">';
+        echo'<a href="#"><img src="imgs/ufo.webp" alt="ufo"></a>';
+        echo '</div>';
+
+        // text
+        echo '<div class="block-posts">';
         echo "<br><br><a href=" . "'?link=" . $row["entryid"] . "'" . "<h3>Date Posted:" . $row["dateposted"]."</h3></a><br>";
         echo "Author: " . userValidation($row["username"])."<br><br>";
+        echo '<input class="button-form" type="submit" value="View Details" name = "search"/>';
+        echo '</div>';
         if(isset($_GET['link'])){
           //echo "uh";
           $_SESSION['entryid'] = $_GET['link'];
@@ -283,10 +294,10 @@ if ($result->num_rows > 0) {
         $count++;
         }
     }
-
-} else {
+  } else {
     echo "0 results";
-}
+  }
+echo '</section>';
 
 printURLs($page, $max_page);
 function printURLs($page,$max)
