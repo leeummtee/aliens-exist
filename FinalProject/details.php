@@ -49,19 +49,30 @@
     }
 
     $entry_id = $_SESSION['entryid'];
+    function phoneNum() {
+      if (isset($_POST['phoneNum'])){
+    		return $_POST['phoneNum'];
+    	}
+    	return "";
+    }
 
-    if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] == 1 && isset($_POST["comment_desc"]))
+    if(isset($_POST['comment_desc']))
+    echo "yo";
+
+    if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] == 1 && isset($_POST['comment_desc']))
     {
       $user = $_SESSION['username'];
 
       $stmt = $conn->prepare("INSERT INTO comment(description) VALUES (?)");
       $stmt->bind_param("s", $description);
-      $description = $_POST["comment_desc"];
+      $description = $_POST['comment_desc'];
       $stmt->execute();
 
-      $comment_id = $conn->insert_id;
+      $comment_id1 = $conn->insert_id;
       $stmt2 = $conn->prepare("INSERT INTO post_comment(username, commentid) VALUES (?, ?)");
       $stmt2->bind_param("si", $user, $comment_id);
+      $user = $_SESSION['username'];
+      $comment_id = $comment_id1;
       $stmt2->execute();
 
       $stmt3 = $conn->prepare("INSERT INTO attached(entryid, commentid) VALUES (?, ?)");
@@ -104,21 +115,24 @@
         echo "0 results";
     }
 
+    echo $entry_id;
+
+
     $sql2 = "SELECT * FROM attached a
     INNER JOIN comment c
     ON a.commentid = c.commentid
     INNER JOIN post_comment pc
     ON c.commentid = pc.commentid
-    WHERE entryid =" . $entry_id;
+    WHERE entryid = " . $entry_id;
 
-    $result = $conn->query($sql2);
-    if ($result->num_rows > 0) {
+    $result2 = $conn->query($sql2);
+    if ($result2->num_rows > 0) {
         // output data of each row
-        while($row = $result->fetch_assoc()) {
+        while($row = $result2->fetch_assoc()) {
           echo "<br> Time Posted:" . $row["timestamp"]."<br>";
           echo "Upvotes:" . $row["upvotes"]."<br>";
           echo "User:" . $row["username"]."<br>";
-          echo "Description:" . $row["username"]."<br>";
+          echo "Description:" . $row["description"]."<br>";
         }
       }
       else {
@@ -186,7 +200,6 @@
     <input class="comment-text" type = "text" id ="comment_desc" name  = "comment_desc" placeholder="Enter Comment"/>
   </p>
     <input class="button-form" type="submit" value="post" name = "post"/>
-  </nav>
   </form>
   </section>
 
