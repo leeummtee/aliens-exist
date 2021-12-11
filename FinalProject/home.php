@@ -29,10 +29,12 @@
     <div id="mySidenav" class="sidenav inactive">
       <a href="javascript:void(0)" role="button" class="closebtn" aria-label="close navigation" onclick="closeNav()">&times;</a>
       <a href="login.php">login</a>
-      <a href="signup.php">sign up</a>
-      <a href="posts.php">posts</a>
-      <a href="home.php">home</a>
-      <a href="logout.php">logout</a>
+			<a href="signup.php">sign up</a>
+			<a href="home.php">home</a>
+			<a href="posts.php">posts</a>
+			<a href="add_posts.php">add posts</a>
+			<a href="profile.php">profile</a>
+			<a href="logout.php">logout</a>
 
     </div>
   </nav>
@@ -49,12 +51,41 @@
   </section>
 
   <section class="container-for-you">
-      <a href="#"><img class="home-listing" src="imgs/mike.jpeg" alt="ufo"></a>
-      <a href="#"><img class="home-listing" src="imgs/mike.jpeg" alt="ufo"></a>
-      <a href="#"><img class="home-listing" src="imgs/mike.jpeg" alt="ufo"></a>
-      <a href="#"><img class="home-listing" src="imgs/mike.jpeg" alt="ufo"></a>
-      <a href="#"><img class="home-listing" src="imgs/mike.jpeg" alt="ufo"></a>
-      <a href="#"><img class="home-listing" src="imgs/mike.jpeg" alt="ufo"></a>
+    <div class="block-for-you">
+      <a href="#"><img class="home-listing" src="imgs/ufo2.png" alt="ufo"></a>
+      <h2> encounter date </h2>
+      <p> by 10bitkun </p>
+    </div>
+
+    <div class="block-for-you">
+      <a href="#"><img class="home-listing" src="imgs/ufo3.jpeg" alt="ufo"></a>
+      <h2> encounter date </h2>
+      <p> by angrimonki </p>
+    </div>
+
+    <div class="block-for-you">
+      <a href="#"><img class="home-listing" src="imgs/ufo4.png" alt="ufo"></a>
+      <h2> encounter date </h2>
+      <p> by oogabooga </p>
+    </div>
+
+    <div class="block-for-you">
+      <a href="#"><img class="home-listing" src="imgs/ufo5.png" alt="ufo"></a>
+      <h2> encounter date </h2>
+      <p> by mariofan4462 </p>
+    </div>
+
+    <div class="block-for-you">
+      <a href="#"><img class="home-listing" src="imgs/ufo6.png" alt="ufo"></a>
+      <h2> encounter date </h2>
+      <p> by cloaked goliath </p>
+    </div>
+
+    <div class="block-for-you">
+      <a href="#"><img class="home-listing" src="imgs/ufo7.png" alt="ufo"></a>
+      <h2> encounter date </h2>
+      <p> by bubbles </p>
+    </div>
   </section>
 
   <footer class="section-divider-footer">

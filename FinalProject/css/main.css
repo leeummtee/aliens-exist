@@ -143,7 +143,7 @@
   /* padding-left: 1rem; */
 }
 
-/* making sure there are only 2 divs per row */
+/* making sure there are only 2 divs per row for posts page */
 @media screen and (min-width: 1850px) {
   .block-posts:nth-of-type(even) {
     padding-top: 15rem;
@@ -157,6 +157,23 @@
     padding-top: 15rem;
     padding-left: 2rem;
     padding-right: 15rem;
+  }
+}
+
+/* making sure there max 3 items per row for the home*/
+@media screen and (min-width: 1745px) {
+  .container-for-you {
+    padding-right: 10rem;
+    padding-left: 10rem;
+
+  }
+}
+
+@media screen and (min-width: 1940px) {
+  .container-for-you {
+    padding-right: 15rem;
+    padding-left: 15rem;
+
   }
 }
 
@@ -388,6 +405,15 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+}
+
+.block-for-you {
+  text-align: center;
+}
+
+.block-for-you h2{
+  font-size: 2rem;
+  margin-top: -2rem;
 }
 
 .home-listing {
