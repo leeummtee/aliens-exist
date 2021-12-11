@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
       <title>Details Page</title>
       <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-      <link href="css/styling.css" rel="stylesheet">
+      <link href="css/main.css" rel="stylesheet">
   </head>
 
   <body>
@@ -27,10 +27,12 @@
       <div id="mySidenav" class="sidenav inactive">
         <a href="javascript:void(0)" role="button" class="closebtn" aria-label="close navigation" onclick="closeNav()">&times;</a>
         <a href="login.php">login</a>
-        <a href="signup.php">sign up</a>
-        <a href="posts.php">posts</a>
-        <a href="home.php">home</a>
-        <a href="logout.php">logout</a>
+  			<a href="signup.php">sign up</a>
+  			<a href="home.php">home</a>
+  			<a href="posts.php">posts</a>
+  			<a href="add_posts.php">add posts</a>
+  			<a href="profile.php">profile</a>
+  			<a href="logout.php">logout</a>
       </div>
     </nav>
 

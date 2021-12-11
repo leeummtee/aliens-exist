@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title>Add Posts</title>
+	<title>Edit Profile</title>
 	<script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
   <link href="css/main.css" rel="stylesheet">
 </head>
@@ -11,6 +11,7 @@
 			<div class="topnav-left">
 				<a href="home.php">
 					<img class="logo-img-nav" src="imgs/logo.png" alt="ufo logo">
+					<!-- <span> <img class="logo" src="imgs/logo.png" alt="ufo logo"> </span> -->
 				</a>
 			</div>
 		</div>
@@ -32,51 +33,41 @@
 	</nav>
 
 	<section class="container-login">
-		<div class="block-login">
+		<div class="block-edit">
   	<form action="" method="post">
 			<div class="container-login-logo">
 				<img class="logo-img" src="imgs/logo.png" alt="ufo logo">
 			</div>
 
-      <h1> Add a post. Voice out the truth. </h1>
+      <div class="form-title">
+          <h1> Edit your profile. </h1>
+      </div>
 
-      <label for="lastname"><b>Date + Time of Encounter: </b></label>
-      <input class="input-text" type="text" placeholder="Enter Date + Time" name="firstname" value= "<?php firstName() ?>"> <br> <br>
+      <label for="lastname"><b>First Name</b></label>
+      <input class="input-text" type="text" placeholder="Enter First Name" name="firstname" value= "<?php firstName() ?>"> <br> <br>
 
-      <label for="user"><b>City of Encounter: </b></label>
-      <input class="input-text" type="text" placeholder="City of Encounter" name="user" value= "<?php userName() ?>"> <br> <br>
+      <label for="lastname"><b>Last Name</b></label>
+      <input class="input-text" type="text" placeholder="Enter Last Name" name="lastname" value= "<?php lastName() ?>"> <br> <br>
 
-			<label for="phoneNum"><b>Country of Encounter: </b></label>
-      <input class="input-text" type="text" placeholder="Country of Encounter" name="phoneNum" value= "<?php phoneNum() ?>"> <br> <br>
+      <label for="user"><b>Username</b></label>
+      <input class="input-text" type="text" placeholder="Enter Username" name="user" value= "<?php userName() ?>"> <br> <br>
 
-      <label for="pass"><b>Duration of Encounter:</b></label>
-      <input class="input-text" type="password" placeholder="Duration of Encounter" name="psw" value= "<?php psw() ?>"> <br> <br>
+			<label for="phoneNum"><b>Phone Number: </b></label>
+      <input class="input-text" type="text" placeholder="Enter Phone Number" name="phoneNum" value= "<?php phoneNum() ?>"> <br> <br>
 
-			<label for="description"><b>Description of Encounter: </b></label>
-			<input class="input-desc" type="text" placeholder="Enter your description" name="lastname" value= "<?php lastName() ?>"> <br> <br>
+      <label for="email"><b>Email</b></label>
+      <input class="input-text" type="text" placeholder="Enter Email" name="email" value= "<?php email() ?>"> <br> <br>
 
+      <label for="pass"><b>Password</b></label>
+      <input class="input-text" type="password" placeholder="Enter Password" name="psw" value= "<?php psw() ?>"> <br> <br>
+
+      <label for="pass-repeat"><b>Repeat Password</b></label>
+      <input class="input-text" type="password" placeholder="Repeat Password" name="psw-repeat" value= "<?php pswRepeat() ?>"><br> <br>
+
+      <label for="lastname"><b>Your Bio: </b></label>
+      <input class="input-desc" type="text" placeholder="Enter Bio" name="lastname" value= "<?php lastName() ?>"> <br>
 			<div class="container-login-buttons">
-				<div class="block-checkboxes">
-					<p class="search">Ufo Shape:</p>
-					<input type="checkbox" id="fireball" name="fireball" value="fireball" <?php if(isset($_POST['fireball'])) echo 'checked="checked"'; ?>>
-					<label for="fireball">Fireball</label><br>
-					<input type="checkbox" id="disk" name="disk" value="disk"  <?php if(isset($_POST['disk'])) echo 'checked="checked"'; ?>>
-					<label for="disk">Disk</label><br>
-					<input type="checkbox" id="triangle" name="triangle" value="triangle" <?php if(isset($_POST['triangle'])) echo 'checked="checked"'; ?>>
-					<label for="triangle">Triangle</label><br>
-					<input type="checkbox" id="circle" name="circle" value="circle" <?php if(isset($_POST['circle'])) echo 'checked="checked"'; ?>>
-					<label for="circle">Circle</label><br>
-					<input type="checkbox" id="other" name="other" value="other" <?php if(isset($_POST['other'])) echo 'checked="checked"'; ?>>
-					<label for="other">Other</label><br></form>
-					<!-- <label class="posts-sort" for="sort-list">Sort by:</label> -->
-				</div>
-			</div>
-
-			<div class="container-login-buttons">
-				<br>
-				<div class="test">
-					<input class="button-form" type="submit" value="Sign Up" name = "signup"/>
-				</div>
+      	<input class="button-form" type="submit" value="Submit Changes" name = "signup"/>
 			</div>
 
     </div>

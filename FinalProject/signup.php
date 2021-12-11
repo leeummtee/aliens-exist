@@ -2,7 +2,7 @@
 <head>
 	<title>Sign Up</title>
 	<script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
-  <link href="css/styles.css" rel="stylesheet">
+  <link href="css/main.css" rel="stylesheet">
 </head>
 <body>
 	<nav>
@@ -23,8 +23,10 @@
 			<a href="javascript:void(0)" role="button" class="closebtn" aria-label="close navigation" onclick="closeNav()">&times;</a>
 			<a href="login.php">login</a>
 			<a href="signup.php">sign up</a>
-			<a href="posts.php">posts</a>
 			<a href="home.php">home</a>
+			<a href="posts.php">posts</a>
+			<a href="add_posts.php">add posts</a>
+			<a href="profile.php">profile</a>
 			<a href="logout.php">logout</a>
 
 		</div>

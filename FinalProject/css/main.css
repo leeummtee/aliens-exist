@@ -91,6 +91,30 @@
   background-color: rgba(0, 0, 0, 0.1);
 } */
 
+.nav-button {
+  font-family: 'Nunito', sans-serif;
+  font-size:1rem;
+  color: #FFFFFF;
+  background-color: transparent;
+  border: 2px solid white;
+  border-radius: 8px;
+  /* transition-property: background-color; */
+  transition-duration: 0.5s;
+  width:10rem;
+  height:2.5rem;
+  margin-left:1rem;
+  margin-right:1rem;
+}
+
+.nav-button:hover {
+  color: #FFF;
+  background-color: #808080;
+}
+
+.nav-button:focus {
+  outline-color: #D5FFCE;
+}
+
 .container-posts {
   margin-top: -5rem;
   display: flex;
@@ -248,11 +272,48 @@
 
 }
 
+.block-profile {
+  align-content: center;
+  /* max-width: 35rem; */
+  padding-right: 3rem;
+  padding-left: 3rem;
+  padding-top: 3rem;
+  /* border-color: #BFBFBF;
+  border-style: solid; */
+}
+
+.container-profile {
+  padding-top: 10rem;
+  display: flex;
+  justify-content:center;
+  /* margin-left: -5rem;
+  margin-right: -5rem; */
+}
+
+.container-profile p {
+  font-size: 1.5rem;
+}
+
+.container-profile li {
+  font-size: 1.25rem;
+}
+
 .block-login {
   align-content: center;
   padding-right: 3rem;
   padding-left: 3rem;
   padding-top: 3rem;
+  border-color: #BFBFBF;
+  border-style: solid;
+}
+
+
+.block-edit {
+  align-content: center;
+  padding-right: 3rem;
+  padding-left: 3rem;
+  padding-top: 3rem;
+  /* width: 35rem; */
   border-color: #BFBFBF;
   border-style: solid;
 }
@@ -295,6 +356,13 @@
 }
 
 .container-login-logo {
+  display: flex;
+  justify-content:center;
+  padding-top:1rem;
+  margin-bottom: -2rem;
+}
+
+.container-form-title {
   display: flex;
   justify-content:center;
   padding-top:1rem;
@@ -391,8 +459,10 @@
   font-family: 'Nunito', sans-serif;
   text-decoration: none;
   // border: 2px solid white;
-  border: 2px solid #D5FFCE;
+  /* border: 2px solid #D5FFCE; */
+  border: 2px solid white;
   transition-duration: 0.5s;
+  border-radius: 10px;
 }
 
 .button-nav:hover {
@@ -450,6 +520,10 @@
   background: #e0e0e0;
   border-color: #d6d6d6;
   outline-color: #d6d6d6;
+}
+
+.block-edit .input-desc {
+  margin-bottom: 3rem;
 }
 
 .input-desc {
@@ -835,7 +909,7 @@ h3 {
 h4 {
   font-style: italic;
   font-family: 'Open Sans';
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   text-decoration: underline;
 
 }

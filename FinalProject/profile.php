@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title>Add Posts</title>
+	<title>Profile</title>
 	<script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
   <link href="css/main.css" rel="stylesheet">
 </head>
@@ -31,51 +31,36 @@
 		</div>
 	</nav>
 
-	<section class="container-login">
-		<div class="block-login">
+	<section class="container-profile">
+		<div class="block-profile">
+			<img src="imgs/profile.jpeg" alt="profile pic">
+		</div>
+
+		<div class="block-profile">
   	<form action="" method="post">
-			<div class="container-login-logo">
-				<img class="logo-img" src="imgs/logo.png" alt="ufo logo">
-			</div>
+      <h1> Hey, I'm Marrack Obama! </h1>
+			<p>
+				I'm a local lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel quam accumsan, aliquam ligula nec, sodales dui. Vivamus molestie, nunc vel pretium venenatis, eros diam consequat diam, non aliquet justo odio a diam. Fusce a dapibus lectus. Cras feugiat consectetur consequat.
+			</p>
 
-      <h1> Add a post. Voice out the truth. </h1>
+			<h4> My preferences include: </h4>
+			<ul>
+				<li> UFO Type: Donut </li>
+				<li> Location: Akihabara </li>
+			</ul>
 
-      <label for="lastname"><b>Date + Time of Encounter: </b></label>
-      <input class="input-text" type="text" placeholder="Enter Date + Time" name="firstname" value= "<?php firstName() ?>"> <br> <br>
+			<h4> Profile statistics: </h4>
+			<ul>
+				<li> Number of Posts: 420 btw </li>
+				<li> Number of Upvotes: 0 </li>
+			</ul>
 
-      <label for="user"><b>City of Encounter: </b></label>
-      <input class="input-text" type="text" placeholder="City of Encounter" name="user" value= "<?php userName() ?>"> <br> <br>
 
-			<label for="phoneNum"><b>Country of Encounter: </b></label>
-      <input class="input-text" type="text" placeholder="Country of Encounter" name="phoneNum" value= "<?php phoneNum() ?>"> <br> <br>
-
-      <label for="pass"><b>Duration of Encounter:</b></label>
-      <input class="input-text" type="password" placeholder="Duration of Encounter" name="psw" value= "<?php psw() ?>"> <br> <br>
-
-			<label for="description"><b>Description of Encounter: </b></label>
-			<input class="input-desc" type="text" placeholder="Enter your description" name="lastname" value= "<?php lastName() ?>"> <br> <br>
-
-			<div class="container-login-buttons">
-				<div class="block-checkboxes">
-					<p class="search">Ufo Shape:</p>
-					<input type="checkbox" id="fireball" name="fireball" value="fireball" <?php if(isset($_POST['fireball'])) echo 'checked="checked"'; ?>>
-					<label for="fireball">Fireball</label><br>
-					<input type="checkbox" id="disk" name="disk" value="disk"  <?php if(isset($_POST['disk'])) echo 'checked="checked"'; ?>>
-					<label for="disk">Disk</label><br>
-					<input type="checkbox" id="triangle" name="triangle" value="triangle" <?php if(isset($_POST['triangle'])) echo 'checked="checked"'; ?>>
-					<label for="triangle">Triangle</label><br>
-					<input type="checkbox" id="circle" name="circle" value="circle" <?php if(isset($_POST['circle'])) echo 'checked="checked"'; ?>>
-					<label for="circle">Circle</label><br>
-					<input type="checkbox" id="other" name="other" value="other" <?php if(isset($_POST['other'])) echo 'checked="checked"'; ?>>
-					<label for="other">Other</label><br></form>
-					<!-- <label class="posts-sort" for="sort-list">Sort by:</label> -->
-				</div>
-			</div>
 
 			<div class="container-login-buttons">
 				<br>
 				<div class="test">
-					<input class="button-form" type="submit" value="Sign Up" name = "signup"/>
+					<a class="button-nav" href="edit_profile.php"> Edit Profile </a>
 				</div>
 			</div>
 

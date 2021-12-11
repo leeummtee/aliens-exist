@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <title> Home </title>
-  <link href="css/styles.css" rel="stylesheet">
+  <link href="css/main.css" rel="stylesheet">
   <!-- <link href="css/queries.css" rel="stylesheet"> -->
   <!-- linking the fade animations that must be loaded in header -->
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
@@ -41,7 +41,7 @@
     <div class="block">
       <header class="header-text-detailed">
         <h1 id="project-header"> UFO encounters for you.</h1>
-        <p> Dem flying saucers really be out der my guys. Stay safe out there. </p>
+        <p> A few posts based on your preferences. </p>
         <!-- down arrow reference: https://www.w3schools.com/howto/howto_css_arrows.asp -->
         <p><i class="arrow down"></i></p>
       </header>
@@ -58,12 +58,12 @@
   </section>
 
   <footer class="section-divider-footer">
-    <div class="container-footer">
-      <p> ©2021 - Group2 | </p>
-      <a class="link" href="login.php"> login </a>
-      <a class="link" href="signup.php"> sign up </a>
-      <a class="link" href="posts.php"> posts </a>
-    </div>
+  	<div class="container-footer">
+  		<p> ©2021 - Group2 | </p>
+  		<a class="link" href="login.php"> login </a>
+  		<a class="link" href="signup.php"> sign up </a>
+  		<a class="link" href="posts.php"> posts </a>
+  	</div>
   </footer>
 
   <!-- linking the animation library  -->
