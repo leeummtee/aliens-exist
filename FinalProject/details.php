@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
       <title>Details Page</title>
       <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-      <link href="css/styles.css" rel="stylesheet">
+      <link href="css/styling.css" rel="stylesheet">
   </head>
 
   <body>
@@ -31,13 +31,13 @@
         <a href="posts.php">posts</a>
         <a href="home.php">home</a>
         <a href="logout.php">logout</a>
-
       </div>
-
     </nav>
+
     <section class="padding-detailed">
 
     <?php
+
     include_once("database.php");
     session_start();
 
@@ -94,10 +94,12 @@
     // echo $entry_id;
     $sql = "SELECT * FROM entries WHERE entryid =" . $entry_id;
 
+    // echo '<section class="container-posts">';
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         // output data of each row
         while($row = $result->fetch_assoc()) {
+            // echo '<div class="block-posts">';
             echo "<h1>Date Posted:" . $row["dateposted"]."</h1><br>";
             echo "Author: " . userValidation($row["username"])."<br>";
             echo "Country: " . $row["country"]."<br>";
@@ -110,12 +112,16 @@
             echo "Duration (secs): " . $row["duration_seconds"]."<br>";
             echo "Duration (hrs and mins): " . $row["duration_hrs_mins"]."<br>";
             echo "Description: " . $row["comment"]."<br>";
+            // echo "</div>";
+
+            // img
+            // echo '<div class="block-posts">';
+            // echo'<a href="#"><img src="imgs/ufo.webp" alt="ufo"></a>';
+            // echo '</div>';
             }
         } else {
         echo "0 results";
     }
-
-    echo $entry_id;
 
 
     $sql2 = "SELECT * FROM attached a
@@ -144,9 +150,10 @@
       header('Location: posts.php');
     }
 
-
+    // echo '</section>';
     ?>
   </section>
+
 
   <section class="container-login">
 
@@ -195,11 +202,13 @@
     //   header('Location: posts.php');
     // }
   ?>
+
   <form action = "details.php" method = "POST">
-  <p>
-    <input class="comment-text" type = "text" id ="comment_desc" name  = "comment_desc" placeholder="Enter Comment"/>
-  </p>
-    <input class="button-form" type="submit" value="post" name = "post"/>
+    <p>
+      <input class="comment-text" type = "text" id ="comment_desc" name  = "comment_desc" placeholder="Enter Comment"/>
+    </p>
+      <input class="button-form" type="submit" value="post" name = "post"/>
+  </nav>
   </form>
   </section>
 
