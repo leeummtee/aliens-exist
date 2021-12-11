@@ -81,12 +81,6 @@
       $stmt3->bind_param("si", $entry_id, $comment_id);
       $stmt3->execute();
 
-      $stmt4 = $conn->prepare("UPDATE member
-        SET post_count = post_count + 1
-        WHERE username = ?");
-      $stmt4->bind_param("s", $user);
-      $stmt4 ->execute();
-
 
       //UPDATE member
       //SET post_count = post_count + 1

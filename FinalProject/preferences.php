@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title>Sign Up</title>
+	<title>Preferences</title>
 	<script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
   <link href="css/main.css" rel="stylesheet">
 </head>
@@ -70,107 +70,5 @@
   </form>
 	</div>
 </section>
-</body>
-</html>
-
-<?php
-include_once("database.php");
-session_start();
-function firstName() {
-  if (isset($_POST['firstname'])){
-		return $_POST['firstname'];
-	}
-	return "";
-}
-echo firstName();
-function lastName() {
-  if (isset($_POST['lastname'])){
-		return $_POST['lastname'];
-	}
-	return "";
-}
-
-function userName() {
-  if (isset($_POST['user'])){
-		return $_POST['user'];
-	}
-	return "";
-}
-
-function phoneNum() {
-  if (isset($_POST['phoneNum'])){
-		return $_POST['phoneNum'];
-	}
-	return "";
-}
-
-function email() {
-  if (isset($_POST['email'])){
-		return $_POST['email'];
-	}
-	return "";
-}
-
-function psw() {
-  if (isset($_POST['psw'])){
-		return $_POST['psw'];
-	}
-	return "";
-}
-
-function pswRepeat() {
-  if (isset($_POST['psw-repeat']))
-		return $_POST['psw-repeat'];
-	return "";
-}
-
-function valid()
-{
-	$count = 0;
-	if(userName())
-		$count++;
-	if(firstName())
-		$count++;
-	if(lastName())
-		$count++;
-	if(phoneNum())
-		$count++;
-	if(email())
-		$count++;
-	if(psw())
-		$count++;
-	return $count;
-}
-//echo valid();
-if(valid() >= 6){
-$signup = "INSERT INTO member(username, post_count, password, last_name, phone_num, first_name, email) VALUES(
-'" . userName() . "',
-'0',
-'" . pswRepeat() . "',
-'" . lastName() . "',
-'" . phoneNum() . "',
-'" . firstName() . "',
-'" . email() . "')";
-
-if ($conn->query($signup) === TRUE) {
-  echo "New record created successfully";
-	$_SESSION['username'] = userName();
-	header( "Location: preferences.php" );
-} else {
-  echo "Error: " . $signup . "<br>" . $conn->error;
-}
-}
-?>
-<footer class="section-divider-footer">
-	<div class="container-footer">
-		<p> ©2021 - Group2 | </p>
-		<a class="link" href="login.php"> login </a>
-		<a class="link" href="signup.php"> sign up </a>
-		<a class="link" href="posts.php"> posts </a>
-	</div>
-</footer>
-
-<!-- linking javascript file -->
-<script src="js/main.js"></script>
 </body>
 </html>
