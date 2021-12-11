@@ -413,7 +413,12 @@
 
 .block-for-you h2{
   font-size: 2rem;
-  margin-top: -2rem;
+  margin-top: -2.5rem;
+}
+
+.block-for-you p{
+  font-size: 1.5rem;
+  margin-top: -1.5rem;
 }
 
 .home-listing {
