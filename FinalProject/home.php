@@ -50,17 +50,17 @@
   </section>
 
   <?php
-  include_once("database.php");
+  include_once("database.php"); //Connecting to the database
   session_start();
-
   $sql_statement = "";
-  function defaultSetting()
+  function defaultSetting() //If the user has no preferences or is a visitor
   {
     return "SELECT * FROM entries ORDER BY dateposted DESC LIMIT 6";
   }
 
-  if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] == 1)
+  if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] == 1) //If the user is logged in
   {
+    //Checking if the user has preferences or not
     $user = $_SESSION['username'];
     $stmt = $conn->prepare("SELECT EXISTS(
            SELECT *
@@ -80,9 +80,10 @@
             }
         }
     }
-    if($prefExists == "1")
+    if($prefExists == "1") //If the user has preferences
     {
       $user = $_SESSION['username'];
+      //Extracting all the user preferences from the database
       $stmt_get_pref = $conn->prepare("SELECT country, city, shape, upvotes FROM
       preferences INNER JOIN set_pref ON preferences.preference_id = set_pref.preference_id
       WHERE username =  ?");
@@ -95,7 +96,7 @@
       $upvotes = '';
 
       $result = $stmt_get_pref->get_result();
-      while ($row = $result->fetch_array()) {
+      while ($row = $result->fetch_array()) { //Saving out put from preferences
           $city = $row['city'];
           $country = $row['country'];
           $shape = $row['shape'];
@@ -104,7 +105,7 @@
       $sql_statement = "SELECT * FROM entries";
 
       $imgIncrementer = 2;
-      if($shape != '')
+      if($shape != '') //If there are image shape preferences, print the 6 lastest posts
       {
         $sql_statement .= $shape . " ORDER BY dateposted DESC LIMIT 6";
         $result_records = $conn->query($sql_statement);
@@ -132,7 +133,7 @@
 
       echo '<br> <br>';
 
-      if($country != '')
+      if($country != '') //If there are country preferences, print the 6 lastest posts
       {
         $stmt = $conn->prepare("SELECT * FROM entries WHERE country = ? ORDER BY dateposted DESC LIMIT 6");
         $stmt->bind_param("s", $country);
@@ -164,7 +165,7 @@
 
       echo '<br> <br>';
 
-      if($city != '')
+      if($city != '') //If there are city preferences, print the 6 lastest posts
       {
         $stmt2 = $conn->prepare("SELECT * FROM entries WHERE city = ? ORDER BY dateposted DESC LIMIT 6");
         $stmt2->bind_param("s", $city);
@@ -194,7 +195,7 @@
         echo '</section>';
       }
 
-      if($city == '' && $country == '' && $shape == '')
+      if($city == '' && $country == '' && $shape == '') //If all preferences are empty, print the 6 latest posts
       {
         $sql_statement = defaultSetting();
         $result_records = $conn->query($sql_statement);
@@ -215,10 +216,9 @@
         }
         echo '</section>';
       }
-    } else {
+    } else { //Print the lastest posts if there are no preferences
       $sql_statement = defaultSetting();
       $result_records = $conn->query($sql_statement);
-      // echo "<h1> Newest Posts </h1>";
       echo '<h1 class="block-for-you"> Newest Posts </h1>';
       echo '<section class="container-for-you">';
       if ($result_records->num_rows > 0) {
@@ -236,7 +236,7 @@
       }
       echo '</section>';
     }
-  } else {
+  } else { //Print the lastest posts if they are not a member
     $sql_statement = defaultSetting();
     $result_records = $conn->query($sql_statement);
     echo '<h1 class="block-for-you"> Newest Posts </h1>';
@@ -247,8 +247,7 @@
         echo '<a><img class="home-listing" src="imgs/ufo5.png" alt="ufo"></a>';
         echo "<br><br><a href=" . "'?link=" . $row["entryid"] . "'" . "<h3>Date Posted:" . $row["dateposted"]."</h3></a><br>";
         echo "</div>";
-        if(isset($_GET['link'])){
-          //echo "uh";
+        if(isset($_GET['link'])){ //Go to the post if clicked on
           $_SESSION['entryid'] = $_GET['link'];
           header("Location: details.php");
         }

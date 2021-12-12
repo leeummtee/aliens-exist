@@ -37,8 +37,9 @@
 		</div>
 		<div class="block-profile">
 		<?php
-		include_once("database.php");
+		include_once("database.php"); //Connecting to the database
 		session_start();
+		//Extracting user information using username as the primary key
 		$user = $_SESSION['username'];
 		$firstname;
 		$lastname;
@@ -50,7 +51,8 @@
 		$stmt2->bind_param("s", $user);
 		$stmt2->execute();
 		$result = $stmt2->get_result();
-		while ($row = $result->fetch_array()) {
+
+		while ($row = $result->fetch_array()) { //Storing user information in variables
 			$firstname = $row['first_name'];
 			$lastname = $row['last_name'];
 			$post_count = $row['post_count'];
@@ -60,16 +62,19 @@
 		?>
   	<form action="" method="post">
 			<?php
-			if($firstname != "" || $lastname != "")
+			if($firstname != "" || $lastname != "") //Displaying the users first and last name
 			{
 				echo "<h1> Hey, I'm " . $firstname . " " . $lastname . "</h1>";
+			} else {
+				echo "<h1>No Name to Display</h1>";
 			}
 
-			if($bio != "")
+			if($bio != "") //Displaying user bio if there is one
 			{
 				echo "<p>" . $bio . "</p>";
 			}
 
+			//Checking if the user has preferences
 			$stmt = $conn->prepare("SELECT EXISTS(
 						 SELECT *
 						 FROM set_pref
@@ -88,7 +93,9 @@
 							}
 					}
 			}
-			if ($prefExists == "1"){
+
+			if ($prefExists == "1"){ //If preferences exist
+				//Extracting preference information from the database
 				$city;
 				$country;
 				$shape;
@@ -98,24 +105,22 @@
 				$stmt2->bind_param("s", $user);
 				$stmt2->execute();
 				$result = $stmt2->get_result();
-				while ($row = $result->fetch_array()) {
+				while ($row = $result->fetch_array()) { //Storing preferences in variables
 					$city = $row['city'];
 					$country = $row['country'];
 					$shape = $row['shape'];
 				}
-
-
 				echo "<h4>My preferences include:</h4>";
 				echo "<ul>";
-				if($city != "")
+				if($city != "") //If there is a city to display, display the city
 				{
 					echo "<li>City: " . $city . "</il>";
 				}
-				if($country != "")
+				if($country != "") //If there is a country to display, display the country
 				{
 					echo "<li>Country: " . $country . "</il>";
 				}
-				if($shape != "")
+				if($shape != "") //If there are shapes to display, display the shapes
 				{
 					$shapes = "";
 					$fireball = " , fireball";
@@ -144,12 +149,12 @@
 					echo "<li>UFO Shapes: " . $finalshapes .  "</il>";
 				}
 				echo "</ul>";
-			} else {
+			} else { //If there are no preferences
 				echo "<h4>No preferences set</h4>";
 			}
 			echo "<h4>Profile statistics:</h4>";
 			echo "<ul>";
-			if($post_count != "")
+			if($post_count != "") //Displaying post count
 			{
 				echo "<li>Post Count: " . $post_count . "</il>";
 			} else
@@ -173,93 +178,6 @@
 </body>
 </html>
 
-<?php
-
-function firstName() {
-  if (isset($_POST['firstname'])){
-		return $_POST['firstname'];
-	}
-	return "";
-}
-echo firstName();
-function lastName() {
-  if (isset($_POST['lastname'])){
-		return $_POST['lastname'];
-	}
-	return "";
-}
-
-function userName() {
-  if (isset($_POST['user'])){
-		return $_POST['user'];
-	}
-	return "";
-}
-
-function phoneNum() {
-  if (isset($_POST['phoneNum'])){
-		return $_POST['phoneNum'];
-	}
-	return "";
-}
-
-function email() {
-  if (isset($_POST['email'])){
-		return $_POST['email'];
-	}
-	return "";
-}
-
-function psw() {
-  if (isset($_POST['psw'])){
-		return $_POST['psw'];
-	}
-	return "";
-}
-
-function pswRepeat() {
-  if (isset($_POST['psw-repeat']))
-		return $_POST['psw-repeat'];
-	return "";
-}
-
-function valid()
-{
-	$count = 0;
-	if(userName())
-		$count++;
-	if(firstName())
-		$count++;
-	if(lastName())
-		$count++;
-	if(phoneNum())
-		$count++;
-	if(email())
-		$count++;
-	if(psw())
-		$count++;
-	return $count;
-}
-//echo valid();
-if(valid() >= 6){
-$signup = "INSERT INTO member(username, post_count, password, last_name, phone_num, first_name, email) VALUES(
-'" . userName() . "',
-'0',
-'" . pswRepeat() . "',
-'" . lastName() . "',
-'" . phoneNum() . "',
-'" . firstName() . "',
-'" . email() . "')";
-
-if ($conn->query($signup) === TRUE) {
-  echo "New record created successfully";
-	$_SESSION['username'] = userName();
-	header( "Location: posts.php" );
-} else {
-  echo "Error: " . $signup . "<br>" . $conn->error;
-}
-}
-?>
 <footer class="section-divider-footer">
 	<div class="container-footer">
 		<p> ©2021 - Group2 | </p>

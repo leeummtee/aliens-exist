@@ -137,8 +137,6 @@
     if(isset($_GET['page'])){
       header('Location: posts.php');
     }
-
-    // echo '</section>';
     ?>
   </section>
 

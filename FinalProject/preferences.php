@@ -1,21 +1,22 @@
 <?php
-include_once("database.php");
+include_once("database.php"); //Connecting to the database
 session_start();
 
-function city() {
+function city() { //Function to check if there is a city input
   if (isset($_POST['city'])){
 		return $_POST['city'];
 	}
 	return "";
 }
 
-function country() {
+function country() { //Function to check if there is a country input
   if (isset($_POST['country'])){
 		return $_POST['country'];
 	}
 	return "";
 }
 
+//Checking all the shapes
 function checkDisk()
 {
   if(empty($_POST['disk'])){
@@ -71,7 +72,7 @@ function upvotes()
 }
 
 
-function howManyShapes()
+function howManyShapes() //Writing a statement to save all the shapes
 {
   $shapes_include = array();
   $sql_statement = " WHERE ";
@@ -154,7 +155,7 @@ function howManyShapes()
     return $sql_statement;
   }
 
-if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] == 1)
+if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] == 1) //Checking if the user is logged in
 {
   $user = $_SESSION['username'];
   $stmt = $conn->prepare("SELECT EXISTS(
@@ -228,7 +229,7 @@ if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] == 1)
   }
 }
 
-if(isset($_POST['setpref']))
+if(isset($_POST['setpref'])) //Head to home page once preferences are set
 {
   header('Location: home.php');
 }

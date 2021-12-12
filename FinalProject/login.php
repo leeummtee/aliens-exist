@@ -1,23 +1,22 @@
 <?php
-include_once("database.php");
+include_once("database.php"); //Connect to the database
 session_start();
-if(isset($_SESSION['isLoggedIn']))
+if(isset($_SESSION['isLoggedIn'])) //If user is already logged in take them to the home page
 {
-  header('Location: posts.php');
+  header('Location: home.php');
   exit();
 }
-if(isset($_POST['login']))
+if(isset($_POST['login'])) //If user is not logged in and attempts to log in, find user
 {
     $user = $_POST['username'];
     $pass = $_POST['password'];
 
     $result = $conn -> query("SELECT username FROM member WHERE username = '$user' AND password = '$pass'");
 
-    if($result -> num_rows > 0)
+    if($result -> num_rows > 0) //If a user exists
     {
       $_SESSION['isLoggedIn'] = 1;
       $_SESSION['username'] = $user;
-
       exit('success');
     } else {
       exit('fail');
@@ -80,31 +79,17 @@ if(isset($_POST['login']))
         <div class="container-login-buttons">
           <input class="button-form" type =  "button" value = "Login" id = "login"/>
           <input href="signup.php" class="button-form" type =  "button" value = "Sign Up" id = "sign up"/>
-          <!-- <a href="signup.php" class="button-form" type =  "button" value = "Sign Up" id = "sign up"/> -->
-        </div>
-
-        <div class="container-login-buttons">
-          <input type="checkbox" checked="checked" name="remember"> Remember me
         </div>
     </div>
-
-        <!-- <label>
-          <input type="checkbox" checked="checked" name="remember"> Remember me
-        </label> -->
       </form>
   </section>
 
-  <!-- <section class="container-login">
-    <input class="button-form" type =  "button" value = "Log In" id = "login"/>
-  </section> -->
-
     <script type = "text/javascript">
+    //Saving log in information
       $(document).ready(function (){
         $("#login").click(function(){
         var user = $("#user").val();
         var pass = $("#pass").val();
-        //if(user == "" || pass == "")
-          //alert('Please check your inputs.');
         $.ajax(
           {
             url:'login.php',

@@ -43,8 +43,6 @@
           <h1> Edit your profile. </h1>
       </div>
 		</br>
-			<label for="lastname"><b>Profile Picture</b></label> </br>
-			<input type="file" name="file"> </br></br>
 
       <label for="lastname"><b>First Name</b></label>
       <input class="input-text" type="text" placeholder="Enter First Name" name="firstname" value= "<?php echo firstName(); ?>"> <br> <br>

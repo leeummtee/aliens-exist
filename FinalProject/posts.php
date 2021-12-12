@@ -75,16 +75,15 @@
   </nav>
 
 <?php
-include_once("database.php");
+include_once("database.php"); //Connecting to the database
 session_start();
-//$_SESSION['page'] = 0;
-if(!isset($_SESSION['page'])){
+if(!isset($_SESSION['page'])){ //If the user does not have a page that they have been on, start at 0
   $_SESSION['page'] = 0;
 }
 
-$sql = "SELECT * FROM entries";
+$sql = "SELECT * FROM entries"; //Generating a query to filter the results
 
-function whichSelectOption($option)
+function whichSelectOption($option) //Allow users to organize post based on most recently posted and oldest posts
 {
   if($option == 'dateposted_oldest')
   {
@@ -96,6 +95,7 @@ function whichSelectOption($option)
   return " ORDER BY dateposted";
 }
 
+//Saving the shape inputs
 function checkDisk()
 {
   if(empty($_POST['disk'])){
@@ -266,7 +266,6 @@ if ($result_records->num_rows > 0) {
 $max_page = $num_of_entry_records / $per_page;
 //$_SESSION['sqlstatement'] = $sql;
 $sql .= " LIMIT " . $per_page . "  OFFSET " . $offset;
-  //echo $sql;
 $result = $conn->query($sql);
 $count = 0;
 
