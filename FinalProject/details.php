@@ -40,35 +40,28 @@
 
     <?php
 
-    include_once("database.php");
+    include_once("database.php"); //Connecting to the database
     session_start();
 
-    function userValidation($name)
+    function userValidation($name) //Checking if there is a user attached to the post or not
     {
       if($name == "")
         return "anonymous";
       return $name;
     }
 
-    $entry_id = $_SESSION['entryid'];
-    function phoneNum() {
-      if (isset($_POST['phoneNum'])){
-    		return $_POST['phoneNum'];
-    	}
-    	return "";
-    }
+    $entry_id = $_SESSION['entryid']; //Obtaining entry id
 
-    if(isset($_POST['comment_desc']))
-
-    if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] == 1 && isset($_POST['comment_desc']))
+    if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] == 1 && isset($_POST['comment_desc'])) //Checking if user is logged in and there is a comment description
     {
+      //Adding comment to the database
       $user = $_SESSION['username'];
-
       $stmt = $conn->prepare("INSERT INTO comment(description) VALUES (?)");
       $stmt->bind_param("s", $description);
       $description = $_POST['comment_desc'];
       $stmt->execute();
 
+      //Adding comment to the relationship table between user and comment
       $comment_id1 = $conn->insert_id;
       $stmt2 = $conn->prepare("INSERT INTO post_comment(username, commentid) VALUES (?, ?)");
       $stmt2->bind_param("si", $user, $comment_id);
@@ -76,23 +69,18 @@
       $comment_id = $comment_id1;
       $stmt2->execute();
 
+      //Adding comment to the relationship table between entry and comment
       $stmt3 = $conn->prepare("INSERT INTO attached(entryid, commentid) VALUES (?, ?)");
       $stmt3->bind_param("si", $entry_id, $comment_id);
       $stmt3->execute();
-
-
-      //UPDATE member
-      //SET post_count = post_count + 1
-      //WHERE username = 'a';
-    //  echo mysqli_insert_id();
     }
-    // echo $entry_id;
+
     $sql = "SELECT * FROM entries WHERE entryid =" . $entry_id;
 
     echo '<section class="container-profile">';
-    $result = $conn->query($sql);
+    $result = $conn->query($sql); //Getting results of entry from query
     if ($result->num_rows > 0) {
-        // output data of each row
+        //Outputting data from each column of the entry row
         while($row = $result->fetch_assoc()) {
             echo '<div class="block-profile">';
             echo "<h1>Date Posted:";
@@ -121,7 +109,7 @@
   </section>
 
     <?php
-    //comments
+    //Obtaining comments attached to the entry
     $sql2 = "SELECT * FROM attached a
     INNER JOIN comment c
     ON a.commentid = c.commentid
@@ -131,7 +119,7 @@
 
     $result2 = $conn->query($sql2);
     if ($result2->num_rows > 0) {
-        // output data of each row
+        //Printing out comments
         while($row = $result2->fetch_assoc()) {
           echo '<div class="block-for-you">';
           echo "<br> Time Posted:" . $row["timestamp"]."<br>";

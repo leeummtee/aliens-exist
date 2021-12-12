@@ -92,46 +92,47 @@
 <?php
 include_once("database.php");
 session_start();
-function datetimeEncounter() {
+function datetimeEncounter() {  //Function to check if date and time has been input
   if (isset($_POST['datetime'])){
 		return $_POST['datetime'];
 	}
 	return "";
 }
 
-function countryEncounter() {
+function countryEncounter() { //Function to check if the country has been input
   if (isset($_POST['countryEncount'])){
 		return $_POST['countryEncount'];
 	}
 	return "";
 }
 
-function cityEncounter() {
+function cityEncounter() { //Function to check if the city has been input
   if (isset($_POST['city'])){
 		return $_POST['city'];
 	}
 	return "";
 }
 
-function durationHrMinsEncounter() {
+function durationHrMinsEncounter() { //Function to check if the duration hrs and mins has been input
   if (isset($_POST['durationhrsmins'])){
 		return $_POST['durationhrsmins'];
 	}
 	return "";
 }
-function durationSecEncounter() {
+function durationSecEncounter() { //Function to check if the duration in seconds has been input
   if (isset($_POST['durationsec'])){
 		return $_POST['durationsec'];
 	}
 	return "";
 }
-function descriptionEncounter() {
+function descriptionEncounter() { //Function to check if the description has been input
   if (isset($_POST['description'])){
 		return $_POST['description'];
 	}
 	return "";
 }
 
+//Functions to check the shapes
 function checkDisk()
 {
   if(empty($_POST['disk'])){
@@ -197,7 +198,7 @@ function shapeOfUfo()
 	return '';
 }
 
-function Valid()
+function Valid() //Function to check if all required inputs are inputted
 {
 	$counter = 0;
 	if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] == 1)
@@ -215,7 +216,9 @@ function Valid()
 }
 
 
-	if(Valid()) {
+	if(Valid()) { //If all inputs are in place, add to posts
+
+		//Recording all inputs
 		$user = $_SESSION['username'];
 		$datetimeEncounter = datetimeEncounter();
 		$countryEncounter = countryEncounter();
@@ -228,6 +231,7 @@ function Valid()
 		$latitude = '';
 		$state = '';
 
+		//Creating post in the database
 		$stmt = $conn->prepare("INSERT INTO entries(username, datetime, city, state, country, shape, duration_seconds, duration_hrs_mins, comment, latitude, longitude) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 		$stmt->bind_param('sssssssssss',
 		$user,
@@ -243,12 +247,13 @@ function Valid()
 		$latitude);
 		$stmt->execute();
 
-
+		//Inserting post into the relationship table
 		$entry_id = $conn->insert_id;
 		$stmt2 = $conn->prepare("INSERT INTO post_entry(username, entryid) VALUES (?, ?)");
 		$stmt2->bind_param("si", $user, $entry_id);
 		$stmt2->execute();
 
+		//Updating member's post count
 		$stmt4 = $conn->prepare("UPDATE member
 			SET post_count = post_count + 1
 			WHERE username = ?");
@@ -257,7 +262,7 @@ function Valid()
 		print_r($stmt4->error_list);
 	}
 
-	if(Valid())
+	if(Valid()) //Going the the post page after finishing
 	{
 		header('Location: posts.php');
 	}

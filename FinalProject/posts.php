@@ -134,10 +134,6 @@ function checkCircle()
 
 function checkOther()
 {
-  //if($_SESSION['test']){
-  //  $_SESSION['test'] = false;
-    //return true;
-  //}
   if(empty($_POST['other'])){
     return "";
   } else{
@@ -329,9 +325,9 @@ function printURLs($page,$max)
     }
     echo "<a href=" . "'?page=" . $page - 1 . "'><</a><br>";
   }
-  $_SESSION['page'] = $_GET['page'];
   if(isset($_GET['page'])){
     $_SESSION['page'] = $_GET['page'];
+    header("Location: posts.php");
   }
 }
 printURLs($page, $max_page);

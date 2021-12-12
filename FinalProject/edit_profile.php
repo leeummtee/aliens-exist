@@ -78,57 +78,59 @@
 </html>
 
 <?php
-include_once("database.php");
-session_start();
-function firstName() {
+include_once("database.php"); //Connecting to the database
+session_start(); //Starting session
+function firstName() { //Function to check if first name has been input or not
   if (isset($_POST['firstname'])){
 		return $_POST['firstname'];
 	}
 	return "";
 }
-echo firstName();
-function lastName() {
+
+function lastName() { //Function to check if last name has been input or not
   if (isset($_POST['lastname'])){
 		return $_POST['lastname'];
 	}
 	return "";
 }
 
-function userName() {
+function userName() { //Function to check if the username has been input or not
   if (isset($_POST['user'])){
 		return $_POST['user'];
 	}
 	return "";
 }
 
-function phoneNum() {
+function phoneNum() { //Function to check if phone number has been input or not
   if (isset($_POST['phoneNum'])){
 		return $_POST['phoneNum'];
 	}
 	return "";
 }
 
-function bio() {
+function bio() { //Function to check if the bio has been input or not
   if (isset($_POST['bio'])){
 		return $_POST['bio'];
 	}
 	return "";
 }
 
-function psw() {
+function psw() { //Function to check if password has been input or not
   if (isset($_POST['psw'])){
 		return $_POST['psw'];
 	}
 	return "";
 }
 
-function pswRepeat() {
+function pswRepeat() { //Function to check if password has been input or not
   if (isset($_POST['psw-repeat']))
 		return $_POST['psw-repeat'];
 	return "";
 }
+
 $user = $_SESSION['username'];
-if(firstName() != ""){
+
+if(firstName() != ""){ //Changing first name if there is input
 	$user = $_SESSION['username'];
 	$firstname = firstName();
 $stmt2 = $conn->prepare( "UPDATE member
@@ -138,7 +140,7 @@ $stmt2->bind_param("ss", $firstname, $user);
 $stmt2->execute();
 }
 
-if(lastName() != ""){
+if(lastName() != ""){ //Changing last name if there is input
 	$user = $_SESSION['username'];
 	$lastname = lastName();
 $stmt2 = $conn->prepare( "UPDATE member
@@ -149,7 +151,7 @@ $stmt2->execute();
 }
 
 
-if(phoneNum() != ""){
+if(phoneNum() != ""){ //Changing phone number if there is input
 	$user = $_SESSION['username'];
 	$phone = phoneNum();
 $stmt2 = $conn->prepare( "UPDATE member
@@ -159,7 +161,7 @@ $stmt2->bind_param("ss", $phone, $user);
 $stmt2->execute();
 }
 
-if(psw() != "" && psw() == pswRepeat()){
+if(psw() != "" && psw() == pswRepeat()){ //Changing password if there is input and they are the same
 	$user = $_SESSION['username'];
 	$pass = psw();
 $stmt2 = $conn->prepare( "UPDATE member
@@ -169,7 +171,7 @@ $stmt2->bind_param("ss", $pass, $user);
 $stmt2->execute();
 }
 
-if(bio() != ""){
+if(bio() != ""){ //Changing bio if there is input
 	$user = $_SESSION['username'];
 	$bio = bio();
 $stmt2 = $conn->prepare( "UPDATE member
@@ -179,7 +181,7 @@ $stmt2->bind_param("ss", $bio, $user);
 $stmt2->execute();
 }
 
-if(userName() != ""){
+if(userName() != ""){ //Changing username if there is input
 	$user = $_SESSION['username'];
 	$username = userName();
 	$stmt2 = $conn->prepare( "UPDATE member
