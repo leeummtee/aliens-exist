@@ -1,4 +1,4 @@
-<html>
+<html >
 <head>
   <title>Posts</title>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -7,7 +7,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <link href="css/main.css" rel="stylesheet">
 </head>
-<body>
+<body id=posts>
   <nav>
     <!-- logo in the top left -->
     <div class="topnav">
@@ -274,22 +274,22 @@ $sql .= " LIMIT " . $per_page . "  OFFSET " . $offset;
 $result = $conn->query($sql);
 $count = 0;
 
-//echo '<section class="container-posts">';
+echo '<section class="container-posts">';
 if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
       if($count < 10){
         // img
-//        echo '<div class="block-posts">';
-      //  echo'<a href="#"><img src="imgs/ufo.webp" alt="ufo"></a>';
-        //echo '</div>';
+       echo '<div class="block-posts">';
+       echo'<a href="#"><img src="imgs/ufo.webp" alt="ufo"></a>';
+        echo '</div>';
 
         // text
-      //  echo '<div class="block-posts">';
+       echo '<div class="block-posts">';
         echo "<br><br><a href=" . "'?link=" . $row["entryid"] . "'" . "<h3>Date Posted:" . $row["dateposted"]."</h3></a><br>";
-      //  echo "Author: " . userValidation($row["username"])."<br><br>";
-      //    echo '<input class="button-form" type="submit" value="View Details" name = "search"/>';
-      //  echo '</div>';
+       echo "Author: " . userValidation($row["username"])."<br><br>";
+         echo '<input class="button-form" type="submit" value="View Details" name = "search"/>';
+       echo '</div>';
         if(isset($_GET['link'])){
           //echo "uh";
           $_SESSION['entryid'] = $_GET['link'];
@@ -301,7 +301,7 @@ if ($result->num_rows > 0) {
   } else {
     echo "0 results";
   }
-
+  echo '</section>';
 function printURLs($page,$max)
 {
   if($page == 0)

@@ -59,20 +59,14 @@
   padding-bottom: 5rem;
 }
 
-.block-posts:nth-of-type(even) {
+@media screen and (min-width: 2100px) {
+#posts .block-posts:nth-of-type(even) {
   padding-top: 15rem;
   padding-left: 2rem;
+  padding-right: 10rem;
   /* padding-left: 1rem; */
 }
 
-/* making sure there are only 2 divs per row for posts page */
-@media screen and (min-width: 1850px) {
-  .block-posts:nth-of-type(even) {
-    padding-top: 15rem;
-    padding-left: 2rem;
-    padding-right: 10rem;
-  }
-}
 
 @media screen and (min-width: 2000px) {
   .block-posts:nth-of-type(even) {
@@ -476,7 +470,6 @@
   height:2.5rem;
   margin-left:1rem;
   margin-right:1rem;
-
 }
 
 .button-form:hover {

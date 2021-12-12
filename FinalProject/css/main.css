@@ -12,6 +12,15 @@
   font-size: 3.5rem;
 }
 
+@media screen and (min-width: 2100px) {
+#posts .block-posts:nth-of-type(even) {
+  padding-top: 15rem;
+  padding-left: 2rem;
+  padding-right: 10rem;
+  /* padding-left: 1rem; */
+}
+
+
 
 .nav-button {
   font-family: 'Nunito', sans-serif;
