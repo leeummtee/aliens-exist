@@ -1,0 +1,1321 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+
+
+#details strong {
+  font-size: 1.5rem;
+}
+
+#details h1 {
+  font-size: 3.5rem;
+}
+
+
+.nav-button {
+  font-family: 'Nunito', sans-serif;
+  font-size:1rem;
+  color: #FFFFFF;
+  background-color: transparent;
+  border: 2px solid white;
+  border-radius: 8px;
+  /* transition-property: background-color; */
+  transition-duration: 0.5s;
+  width:10rem;
+  height:2.5rem;
+  margin-left:1rem;
+  margin-right:1rem;
+}
+
+.nav-button:hover {
+  color: #FFF;
+  background-color: #808080;
+}
+
+.nav-button:focus {
+  outline-color: #D5FFCE;
+}
+
+.container-posts {
+  margin-top: -5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.container-posts a {
+  font-size: 1.5rem;
+}
+
+.container-posts input {
+  margin-left: -0.05rem;
+}
+
+.block-posts {
+  /* flex-grow: 0 100%; */
+  /* flex: 0 0 50%; */
+  overflow: hidden;
+  padding-bottom: 5rem;
+}
+
+.block-posts:nth-of-type(even) {
+  padding-top: 15rem;
+  padding-left: 2rem;
+  /* padding-left: 1rem; */
+}
+
+/* making sure there are only 2 divs per row for posts page */
+@media screen and (min-width: 1850px) {
+  .block-posts:nth-of-type(even) {
+    padding-top: 15rem;
+    padding-left: 2rem;
+    padding-right: 10rem;
+  }
+}
+
+@media screen and (min-width: 2000px) {
+  .block-posts:nth-of-type(even) {
+    padding-top: 15rem;
+    padding-left: 2rem;
+    padding-right: 15rem;
+  }
+}
+
+/* making sure there max 3 items per row for the home*/
+@media screen and (min-width: 1745px) {
+  .container-for-you {
+    padding-right: 10rem;
+    padding-left: 10rem;
+
+  }
+}
+
+@media screen and (min-width: 1940px) {
+  .container-for-you {
+    padding-right: 15rem;
+    padding-left: 15rem;
+  }
+}
+
+@media screen and (min-width: 2222px) {
+  .container-for-you {
+    padding-right: 30rem;
+    padding-left: 30rem;
+  }
+}
+
+
+.block-posts-text {
+  flex-grow: 0 100%;
+  flex: 0 0 50%;
+  padding-top: 15rem;
+  padding-left: 2rem;
+  padding-right: 10rem;
+  overflow: hidden;
+}
+
+.padding-detailed {
+  padding-top: 5rem;
+}
+
+.test {
+  margin-left: -2rem;
+}
+
+.sort{
+  margin-left: 2rem;
+}
+
+.padding {
+  margin-bottom:2.3rem;
+}
+
+.search {
+  margin-bottom: 0rem;
+  /* margin-left: 1rem; */
+}
+
+.posts-sort {
+  padding: 0.5rem;
+}
+
+
+
+.container-search {
+  padding-top: 10rem;
+  display: flex;
+  justify-content:center;
+  /* margin-left: -5rem;
+  margin-right: -5rem; */
+}
+
+.logo-img-nav {
+  height: auto;
+  width: auto;
+  max-width: 3rem;
+  max-height: 3rem;
+}
+
+.logo-img-nav-details {
+  height: auto;
+  width: auto;
+  max-width: 3rem;
+  max-height: 3rem;
+  margin-top: -1.5rem;
+}
+
+#login {
+  /* background-color: #303037; */
+}
+
+.comment-text {
+  background: #ededed;
+  border-radius: 10px;
+  /* margin-bottom: 1rem; */
+  /* width: 20rem; */
+  /* height: 10rem; */
+}
+
+.comment-text:hover {
+  background: #808080;
+}
+
+.comment-text:focus {
+  background: #e0e0e0;
+  border-color: #d6d6d6;
+  outline-color: #d6d6d6;
+}
+
+.button-divider{
+  width:10rem;
+  height:auto;
+  display:inline-block;
+}
+
+.logo-img {
+  height: auto;
+  width: auto;
+  max-width: 7rem;
+  max-height: 7rem;
+}
+
+.block-checkboxes-2 {
+  align-content: center;
+  padding-right: 2rem;
+  padding-left: 2rem;}
+
+.block-checkboxes {
+  align-content: center;
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+
+.block-checkboxes-padded {
+  align-content: center;
+  padding-right: 1rem;
+  padding-left: 1rem;
+
+}
+
+.block-profile {
+  align-content: center;
+  /* max-width: 35rem; */
+  padding-right: 3rem;
+  padding-left: 3rem;
+  padding-top: 3rem;
+  /* border-color: #BFBFBF;
+  border-style: solid; */
+}
+
+.container-profile {
+  padding-top: 10rem;
+  display: flex;
+  justify-content:center;
+  /* margin-left: -5rem;
+  margin-right: -5rem; */
+}
+
+/* making sure there are only 2 divs per row for posts page */
+@media screen and (min-width: 1550px) {
+  #details .container-profile {
+    padding-left: 10rem;
+    padding-right: 10rem;
+  }
+}
+
+#details .container-profile {
+  padding-top: 5rem;
+  display: flex;
+  justify-content:center;
+}
+
+.container-profile p {
+  font-size: 1.5rem;
+}
+
+.container-profile li {
+  font-size: 1.25rem;
+}
+
+.block-login {
+  align-content: center;
+  padding-right: 3rem;
+  padding-left: 3rem;
+  padding-top: 3rem;
+  border-color: #BFBFBF;
+  border-style: solid;
+}
+
+
+.block-edit {
+  align-content: center;
+  padding-right: 3rem;
+  padding-left: 3rem;
+  padding-top: 3rem;
+  /* width: 35rem; */
+  border-color: #BFBFBF;
+  border-style: solid;
+}
+
+.container-signup {
+  padding-top: 10rem;
+  padding-left: 5rem;
+  padding-right: 5rem;
+  display: flex;
+  justify-content:center;
+  /* margin-left: -5rem;
+  margin-right: -5rem; */
+}
+
+
+.block-signup {
+  align-content: center;
+  padding-right: 8rem;
+  padding-left: 8rem;
+  padding-top: 3rem;
+  border-color: #BFBFBF;
+  border-style: solid;
+}
+
+.container-login {
+  padding-top: 10rem;
+  display: flex;
+  justify-content:center;
+  /* margin-left: -5rem;
+  margin-right: -5rem; */
+}
+
+.container-comment {
+  display: flex;
+  justify-content:center;
+}
+
+
+.container-posts {
+  padding-top: 1rem;
+  padding-bottom;
+  display: flex;
+  justify-content:center;
+  /* margin-left: -5rem;
+  margin-right: -5rem; */
+}
+
+.container-login-logo {
+  display: flex;
+  justify-content:center;
+  padding-top:1rem;
+  margin-bottom: -2rem;
+}
+
+.container-form-title {
+  display: flex;
+  justify-content:center;
+  padding-top:1rem;
+  margin-bottom: -2rem;
+}
+
+.container-login-buttons {
+  display: flex;
+  justify-content:center;
+  padding-bottom:3rem;
+}
+
+
+
+.container-login h1 {
+  /* color: #303037; */
+  font-size: 3.5rem;
+}
+
+/*for you items */
+.container-for-you {
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.block-for-you {
+  text-align: center;
+}
+
+.block-for-you h2{
+  font-size: 2rem;
+  margin-top: -2.5rem;
+}
+
+.block-for-you p{
+  font-size: 1.5rem;
+  margin-top: -1.5rem;
+}
+
+.block-comments {
+  padding-left
+  /* text-align: center; */
+}
+
+.home-listing {
+  flex: 0 0 33%;
+  margin: 3rem;
+}
+
+/* .container-for-you img {
+  max-width: 100%;
+} */
+
+/* lines separating section - reference from style guide template */
+.section-divider {
+  padding-bottom: 2rem;
+  margin-top: -1.5rem;
+  border-top-width: 0.15rem;
+  border-top-style: solid;
+  border-top-color: white;
+}
+
+.section-divider-footer {
+  margin-top: 10rem;
+  margin-bottom: -10rem;
+  border-top-width: 0.15rem;
+  border-top-style: solid;
+  border-top-color: white;
+}
+
+/* lines separating inner elements - reference from https://www.w3schools.com/howto/howto_css_dividers.asp */
+.element {
+  padding-bottom: 2rem;
+  margin-top: -1.5rem;
+  border-top: 3px dashed #bbb;
+}
+
+.element .container-footer {
+  margin-bottom: 6rem;
+}
+
+.element .container-detailed-view h2 {
+  margin-top: 1rem;
+}
+
+/* Styling for in-text link: */
+.link {
+  color: #D5FFCE;
+  font-style: italic;
+  transition-duration: 0.5s;
+
+}
+
+.link:hover{
+  color: #5e8a57;
+  text-decoration: none;
+  transition-duration: 0.5s;
+}
+
+.link:focus{
+  outline-color: #5e8a57;
+}
+
+/*nav button styling */
+.button-nav {
+  display: inline-block;
+  padding: 0.5rem;
+  font-size: 1.3rem;
+  color: white;
+  /* color: #D5FFCE; */
+  font-family: 'Nunito', sans-serif;
+  text-decoration: none;
+  // border: 2px solid white;
+  /* border: 2px solid #D5FFCE; */
+  border: 2px solid white;
+  transition-duration: 0.5s;
+  border-radius: 10px;
+}
+
+.button-nav:hover {
+  color: #808080;
+  background-color: #d6d6d6;
+  /* color: #95731C;
+  background-color: #D5FFCE; */
+}
+
+.button-nav:focus {
+  border-color: #D5FFCE;
+  border: 3px solid #D5FFCE;
+}
+
+/* Styling for form xs. Reference from https://www.tyssendesign.com.au/articles/css/styling-form-buttons/ */
+.button-form {
+  font-family: 'Nunito', sans-serif;
+  font-size:1rem;
+  color: #FFFFFF;
+  background-color: transparent;
+  border: 2px solid white;
+  border-radius: 8px;
+  /* transition-property: background-color; */
+  transition-duration: 0.5s;
+  width:10rem;
+  height:2.5rem;
+  margin-left:1rem;
+  margin-right:1rem;
+
+}
+
+.button-form:hover {
+  color: #FFF;
+  background-color: #808080;
+}
+
+.button-form:focus {
+  outline-color: #D5FFCE;
+}
+
+/* Styling for text input fields. Reference from https://learn.shayhowe.com/html-css/building-forms/#text-and-textareas */
+.input-text {
+  background: #ededed;
+  border-radius: 10px;
+  /* margin-bottom: 1rem; */
+  width: 100%;
+  height: 2.75rem;
+}
+
+.input-text:hover {
+  background: #808080;
+}
+
+.input-text:focus {
+  background: #e0e0e0;
+  border-color: #d6d6d6;
+  outline-color: #d6d6d6;
+}
+
+.block-edit .input-desc {
+  margin-bottom: 3rem;
+}
+
+.input-desc {
+  background: #ededed;
+  border-radius: 10px;
+  /* margin-bottom: 1rem; */
+  width: 100%;
+  height: 8rem;
+}
+
+.input-desc:hover {
+  background: #808080;
+}
+
+.input-desc:focus {
+  background: #e0e0e0;
+  border-color: #d6d6d6;
+  outline-color: #d6d6d6;
+}
+
+.input-text-label {
+  display: block;
+  font-weight: bold;
+}
+
+.input-text-contact-us {
+  background: #ededed;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  /* width: 30rem; */
+  height: 2rem;
+  width: 100%;
+}
+
+.input-text-contact-us:hover {
+  background: #D5FFCE;
+}
+
+.input-text-contact-us:hover {
+  background: #D5FFCE;
+}
+
+.input-text-contact-us:focus {
+  background: #e0e0e0;
+  border-color: #D5FFCE;
+  outline-color: #D5FFCE;
+}
+
+/* Styling for image as a link. Reference from https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_image_overlay_opacity */
+.image-link {
+  max-height: 100%;
+  min-width: 100%;
+  object-fit: cover;
+  vertical-align: bottom;
+}
+
+/* making image respond to tab focus reference from http://jsfiddle.net/4x7wg7sb/1/ */
+.imageAnchor:focus img{
+  transition: transform 1.2s;
+  transform: scale(1.1);
+}
+
+.larger-element {
+  padding-top: 0.5rem;
+  margin-bottom: 0.3rem;
+  font-size: 1.2rem;
+}
+
+.image {
+  width: 40rem;
+}
+
+
+/* Styling the colored boxes */
+.rectangle {
+  height: 2rem;
+width: 10rem;;
+  background-color: #ededed;
+}
+
+.rectangle1 {
+  height: 2rem;
+width: 10rem;;
+  background-color: #ABABAB;
+}
+
+.rectangle2 {
+  height: 2rem;
+width: 10rem;;
+  background-color: #808080;
+}
+
+.rectangle4 {
+  height: 2rem;
+width: 10rem;;
+  background-color: #000000;
+}
+
+.rectangle5 {
+  height: 2rem;
+width: 10rem;;
+  background-color: #D5FFCE;
+}
+
+/* styling for the logo (my name)*/
+.logo {
+  margin-left: -2.5rem;
+  font-family: 'Nunito', sans-serif;
+  font-size: 2rem;
+  color: white;
+  font-weight: lighter;
+  transition-duration: 0.5s;
+}
+
+.logo:hover {
+  color: #808080;
+  transition-duration: 0.5s;
+}
+
+.logo:focus{
+  outline: #D5FFCE;
+  color: #808080;
+}
+
+.h2-sample {
+  margin-top: 0rem;
+  font-weight: lighter;
+  font-family: 'Montserrat';
+}
+
+.container-header {
+  padding-top: 16rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  border-radius: 3px;
+  padding-bottom: 25rem;
+}
+
+/* end of reference for block image overlays */
+.block {
+  flex-grow: 1;
+  padding: 2%;
+}
+
+/* side navbar reference from https://www.w3schools.com/howto/howto_js_sidenav.asp */
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  right: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 5rem;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: white;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #808080;
+}
+
+.sidenav a:focus {
+  outline-color: #D5FFCE;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  right: 4.75rem;
+  top: 2.5rem;
+  font-size: 60px;
+  margin-left: 50px;
+}
+
+.closebtn:focus{
+  outline-color: #D5FFCE;
+}
+/* end of sidenav reference */
+
+
+.icon-right-justified {
+  position: absolute;
+  right: 5.5rem;
+  top: 4rem;
+  transition-duration: 0.5s;
+  font-size:30px;
+  cursor:pointer
+}
+
+.icon-right-justified-styleguide {
+  position: relative;
+  align-self: flex-end;
+  left: 95%;
+  top:4rem;
+  transition-duration: 0.5s;
+}
+
+.icon-right-justified:hover {
+  color: #808080;
+transition-duration: 0.5s;
+}
+
+.icon-right-justified:focus {
+  outline-color: #D5FFCE;
+  color: #808080;
+transition-duration: 0.5s;
+}
+
+/* reference for drop down from https://stackoverflow.com/questions/35579569/hide-show-menu-onclick-javascript  */
+
+.dropbtn {
+  font-family: inherit;
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: white;
+  display: block;
+  transition: 0.3s;
+  cursor:pointer;
+}
+
+.dropbtn:hover{
+  color: #808080;
+}
+
+.drop-content {
+  display: none;
+}
+
+.drop-content a{
+  margin-left: 2rem;
+}
+
+/* logo in the top left */
+.topnav-left {
+  float: left;
+  padding-left: 3rem;
+  padding-top: 1.5rem;
+}
+
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  text-decoration: none;
+}
+
+.topnav {
+  position: absolute;
+  overflow: hidden;
+  justify-content: space-between;
+   align-items: center;
+}
+
+/* header reference from https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_style_header */
+.header {
+  width: auto;
+  height: 150px;
+  overflow: hidden;
+  border: 5px solid black;
+}
+
+/* https://www.w3schools.com/howto/howto_css_image_text.asp */
+.header-text {
+  position: absolute;
+  color: white;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.header-text h1 {
+  font-size: 5rem;
+  margin-top: 0rem;
+}
+
+.header-text p {
+  padding-top: 1rem;
+}
+
+
+/* crop for services header https://stackoverflow.com/questions/493296/css-display-an-image-resized-and-cropped */
+.crop-header {
+  width: 100%;
+  height: 40rem;
+  overflow: hidden;
+}
+
+.crop-header img {
+  width: 100%;
+  height: 100%;
+  margin: 0px 0 0 0px;
+  object-fit: cover;
+}
+
+/* Styling for footer */
+.container-footer{
+ justify-content: center;
+ display: flex;
+ flex-wrap: wrap;
+ align-items: center;
+ padding-bottom: 0rem;
+ margin-bottom: 0rem;
+}
+
+.element .container-footer {
+  padding-bottom: 10rem;
+}
+
+.container-footer a{
+  padding: 15px;
+}
+
+.container-footer p{
+  font-size: 1rem;
+}
+
+.block-footer {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.block-footer ul {
+   list-style-type: none;
+   margin-left: -3.5rem;
+}
+
+.block-footer li {
+   padding-bottom: 1rem;
+}
+
+.block-footer p {
+   margin-top: -1px;
+}
+
+button {
+  border:none;
+  background-color:transparent;
+  color: white;
+}
+
+button:focus {
+  outline-color: #D5FFCE;
+}
+
+h2 {
+  margin-top: 3rem;
+  font-weight: 600;
+  font-size: 3.5rem;
+  font-family: 'Open Sans', sans-serif;
+
+}
+
+h1 {
+  font-size: 4rem;
+  margin-bottom: 0rem;
+  font-family: 'Montserrat', sans-serif;
+}
+
+p {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+
+h3 {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 500;
+  font-size: 3rem
+}
+
+h4 {
+  font-style: italic;
+  font-family: 'Open Sans';
+  font-size: 1.25rem;
+  text-decoration: underline;
+
+}
+
+body {
+  margin-left: 5rem;
+  margin-right: 5rem;
+  margin-top: 3rem;
+  margin-bottom: 0rem;
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+  /* background-color: #161616; */
+  background-color: #111111;
+  transition: background-color 1s ease;
+}
+
+p, h1, h2, h3 {
+  color: white;
+}
+
+
+
+/* ~~~~~~~~~~~~~~~~~~~~ABOUT PAGE~~~~~~~~~~~~~~~~~~~~~~~ */
+
+.container-header {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  border-radius: 3px;
+  margin-bottom: -20rem;
+}
+
+.header-img {
+  width: 50rem;
+}
+
+.container-about {
+  display: flex;
+flex-wrap: wrap;
+justify-content: center;
+  padding-top: 10rem;
+}
+
+.container-about h1 {
+  padding-top: 5rem;
+}
+
+.about-img {
+  width: 40rem;
+  height: 50rem;
+  object-fit: cover;
+}
+
+
+
+.block-about p {
+  width: 30vw;
+}
+
+.block-about h2 {
+  max-width: 50rem;
+  margin-top: 6rem;
+  margin-bottom: 2rem;
+
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~ CONTACT PAGE ~~~~~~~~~~~~~~~~~~~~~~~ */
+.container-contact {
+  display: flex;
+flex-wrap: wrap;
+justify-content: center;
+  padding-top: 10rem;
+  text-align: center;
+}
+
+
+.container-contact h1 {
+  padding-top: 5rem;
+}
+
+.block-contact {
+  z-index: 1;
+  padding-bottom: 10rem;
+}
+
+.block-contact a{
+  text-align: center;
+}
+
+
+
+
+/* ~~~~~~~~~~~~~~~PROJECTS OVERVIEW~~~~~~~~~~~~~~~~~~~~~ */
+.container-projects {
+  display: flex;
+flex-wrap: wrap;
+justify-content: center;
+  padding-top: 0;
+  margin-top: -15rem;
+}
+
+.container-projects h2 {
+  color: white;
+}
+
+.block-projects {
+  overflow: hidden;
+  margin-top: 15rem;
+}
+
+.element .block-projects {
+  margin-top: 10rem;
+}
+
+.element .container-contact {
+  margin-top: -10rem;
+  margin-bottom: 10rem;
+}
+
+.block-projects p {
+  width: 30vw;
+}
+
+.block-projects h2 {
+  max-width: 35vw;
+}
+
+.block-projects:nth-of-type(1) {
+  z-index: 1;
+padding-top: 10rem;;
+  margin-right: -10rem;
+}
+
+.block-projects:nth-of-type(4) {
+  z-index: 1;
+padding-top: 10rem;;
+  margin-left: -10rem;
+}
+
+.block-projects:nth-of-type(5) {
+  z-index: 1;
+padding-top: 10rem;;
+  margin-right: -10rem;
+}
+
+.block-projects:nth-of-type(8) {
+  z-index: 1;
+padding-top: 10rem;;
+  margin-left: -10rem;
+}
+
+.block-projects:nth-of-type(9) {
+  z-index: 1;
+padding-top: 10rem;;
+  margin-right: -10rem;
+}
+
+.block-projects-img {
+  position: relative;
+  flex-grow: 1;
+}
+
+.section-divider .container-projects {
+  margin-top: -9rem;
+}
+
+.projects-img {
+  float: left;
+  width: 50rem;
+  height: 50rem;
+  object-fit: cover;
+}
+
+.container-projects h2{
+  margin-top: 0rem;
+}
+
+#project2-pic {
+  order: 3;
+}
+
+#project2-desc {
+  order: 4;
+}
+
+#project3-desc {
+  order: 5;
+}
+
+#project3-pic {
+  order: 6;
+}
+
+#project4-desc {
+  order: 8;
+}
+
+#project4-pic {
+  order: 7;
+}
+
+#project5-desc {
+  order: 9;
+}
+
+#project5-pic {
+  order: 10;
+}
+
+strong {
+  margin-top: 3rem;
+  font-size: 2rem;
+  padding-top: 10rem;
+}
+
+/* reference for hover interactions from https://www.youtube.com/watch?v=ltxxNidblts */
+
+.image-link {
+  transition: transform 1.2s;
+  float: left;
+  width: 50rem;
+  height: 50rem;
+  object-fit: cover;
+}
+
+.image-link:hover {
+  transition: transform 1.2s;
+  transform: scale(1.1);
+}
+
+.image-link:focus {
+  transition: transform 1.2s;
+  transform: scale(1.1);
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~DETAILED PROJECT VIEW PAGES ~~~~~~~~~~~~~~~~~~~~~~~~~*/
+.container-summary {
+  margin-left: 10rem;
+margin-right: 10rem;;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-top: 15rem;
+}
+
+.container-summary h2 {
+  margin-bottom: -1rem;
+  padding-top: 5rem;
+}
+
+.block-summary {
+  flex: 0 50%;
+}
+
+.block-summary p {
+  padding-bottom: 2rem;
+  margin-top: -2rem;
+}
+
+.container-detailed {
+  margin-left: 10rem;
+margin-right: 10rem;;
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 20rem;
+  justify-content: center;
+}
+
+.container-detailed h2.left-aligned{
+  margin-bottom: 2rem;
+}
+
+.container-detailed .divider {
+  margin-bottom: 0rem;
+}
+
+.container-detailed p {
+  max-width: 35vw;
+}
+
+.almost-full-width-img {
+  left: 50%;
+  margin-left: -45vw;
+  margin-right: -50vw;
+  max-width: 90vw;
+  position: relative;
+  right: 50%;
+  width: 100vw;
+}
+
+.block-detailed h3{
+  margin-top: 20rem;
+  margin-bottom: -1rem;
+}
+
+.block-detailed h2{
+  margin-top: 20rem;
+}
+
+/* making sure these left-aligned blocks do not share a row with another block */
+.block-detailed:nth-of-type(1), .block-detailed:nth-of-type(2), .block-detailed:nth-of-type(4), .block-detailed:nth-of-type(5), .block-detailed:nth-of-type(6), #reflection-poster, .block-detailed:nth-of-type(8), .block-detailed:nth-of-type(9), .block-detailed:nth-of-type(10) {
+  flex: 0 100%;
+}
+
+/* right-aligning these blocks */
+.block-detailed:nth-of-type(3), #animating-block, .block-detailed:nth-of-type(7) {
+  align-self: flex-end;
+  margin-left: auto;
+}
+
+/* moving the first block element closer to the top */
+.block-detailed:nth-of-type(1){
+  margin-top: -20rem;
+}
+
+.container-summary p, h3, h2 {
+  color: white;
+
+}
+
+.container-detailed p, h3, h2 {
+  color: white;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~ KINETIC TYPOGRAPHY DETAILED VIEW ~~~~~~~~~~~~~~~~ */
+.header-text-detailed {
+  text-align: center;
+}
+
+.header-text-detailed h1 {
+  font-size: 5rem;
+  margin-top: 0rem;
+}
+
+.header-text-detailed p {
+  padding-top: 1rem;
+}
+
+.img-style-guide {
+  width: 20rem;
+}
+
+#citations {
+  margin-top: 10rem;
+}
+
+/* responsive video embed, reference from https://www.ostraining.com/blog/coding/responsive-videos/ */
+.video-responsive{
+    overflow:hidden;
+    padding-bottom:56.25%;
+    position:relative;
+    height:0;
+}
+.video-responsive iframe{
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    position:absolute;
+    border: 0;
+}
+
+/* dividers for site */
+.divider {
+  padding-bottom: 0.5rem;
+  margin-top: -1.5rem;
+  border-bottom-width: 0.15rem;
+  border-bottom-style: solid;
+  border-bottom-color: white;
+}
+
+.left-aligned {
+  flex: 0 100%;
+}
+
+.right-aligned .divider {
+  width: 100%;
+  padding-bottom: 0.5rem;
+  margin-top: -1.5rem;
+  border-bottom-width: 0.15rem;
+  border-bottom-style: solid;
+  border-bottom-color: white;
+}
+
+/* arrow reference from https://www.w3schools.com/howto/howto_css_arrows.asp */
+.arrow {
+  margin-top: 7rem;
+  border: solid white;
+  width: 50px;
+  height: 50px;
+  border-width: 0 5px 5px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+.down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+.small-arrow {
+  border: solid white;
+  width: 5px;
+  height: 5px;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+/* making the side navbar more accessible */
+.active {
+  visibility: visible;
+  width: 25rem;
+}
+
+.inactive {
+  visibility: hidden;
+  width: 0;
+}

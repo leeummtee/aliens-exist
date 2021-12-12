@@ -120,12 +120,8 @@
     </div>
   </section>
 
-  <h3 class="comments"> Comments </h3>
-
     <?php
-
     //comments
-
     $sql2 = "SELECT * FROM attached a
     INNER JOIN comment c
     ON a.commentid = c.commentid
@@ -137,10 +133,12 @@
     if ($result2->num_rows > 0) {
         // output data of each row
         while($row = $result2->fetch_assoc()) {
+          echo '<div class="block-for-you">';
           echo "<br> Time Posted:" . $row["timestamp"]."<br>";
           echo "Upvotes:" . $row["upvotes"]."<br>";
           echo "User:" . $row["username"]."<br>";
           echo "Description:" . $row["description"]."<br>";
+          echo '<div>';
         }
       }
       else {
@@ -156,62 +154,14 @@
     ?>
   </section>
 
-
   <section class="container-login">
-
-  <?php
-    // echo '<section class="container-posts">';
-    // $result = $conn->query($sql);
-    // if ($result->num_rows > 0) {
-    //     // output data of each row
-    //     while($row = $result->fetch_assoc()) {
-    //         echo'<div class="block-login">';
-    //         echo "<h1>Date Posted:" . $row["dateposted"]."</h1><br>";
-    //         echo'<div class="block-login">';
-    //         echo "Author: " . userValidation($row["username"])."<br>";
-    //         echo "Country: " . $row["country"]."<br>";
-    //         echo "City: " . $row["city"]."<br>";
-    //         echo "State: " . $row["state"]."<br>";
-    //         echo "Shape: " . $row["shape"]."<br>";
-    //         echo "Latitude: " . $row["latitude"]."<br>";
-    //         echo "Longitude: " . $row["longitude"]."<br>";
-    //         echo "Date and Time of Occurance: " . $row["datetime"]."<br>";
-    //         echo "Duration (secs): " . $row["duration_seconds"]."<br>";
-    //         echo "Duration (hrs and mins): " . $row["duration_hrs_mins"]."<br>";
-    //         echo "Description: " . $row["comment"]."<br>";
-    //         echo'</div>';
-    //         echo'</div>';
-    //         }
-    //     } else {
-    //     echo "0 results";
-    //     echo '</section>';
-    // }
-    // ?>
-
-    <?php
-    //
-    // echo "<br>";
-    //
-    // //JANKY ASS COMMENT SECTION MADE BY YOURS TRULY
-    // $description = $_POST['description'];
-    // $timestamp = $_POST['timestamp'];
-    // $upvotes = $_POST['upvotes'];
-    // $commentid = $_POST['commentid'];
-    // $entryid = $_POST['entryid'];
-    //
-    // echo "<a class='button-form' href=" . "'?page=1'" . "name=" . "'link1'> Back to previous posts" . "</a><br>";
-    // if(isset($_GET['page'])){
-    //   header('Location: posts.php');
-    // }
-  ?>
-
-  <form action = "details.php" method = "POST">
-    <p>
-      <input class="comment-text" type = "text" id ="comment_desc" name  = "comment_desc" placeholder="Enter Comment"/>
-    </p>
-      <input class="button-form" type="submit" value="post" name = "post"/>
-  </nav>
-  </form>
+    <form action = "details.php" method = "POST">
+      <p>
+        <input class="input-desc" type = "text" id ="comment_desc" name  = "comment_desc" placeholder="Enter Comment"/>
+      </p>
+        <input class="button-form" type="submit" value="post" name = "post"/>
+    </nav>
+    </form>
   </section>
 
   <!-- linking javascript file -->
