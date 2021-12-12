@@ -40,23 +40,23 @@
 
       <h1> Add a post. Voice out the truth. </h1>
 
-      <label for="datetime"><b>Date + Time of Encounter (*): </b></label>
-      <input class="input-text" type="text" placeholder="Enter Date + Time" name="datetime" value= "<?php echo $_POST['datetime']; ?>"> <br> <br>
+      <label for="datetime"><b>Date + Time of Encounter yyyy-mm-dd hh:mm:ss (*): </b></label>
+      <input class="input-text" type="text" placeholder="Enter Date + Time" name="datetime" value= "<?php echo datetimeEncounter(); ?>"> <br> <br>
 
       <label for="city"><b>City of Encounter (*): </b></label>
-      <input class="input-text" type="text" placeholder="City of Encounter" name="city" value= "<?php echo $_POST['city']; ?>"> <br> <br>
+      <input class="input-text" type="text" placeholder="City of Encounter" name="city" value= "<?php echo cityEncounter(); ?>"> <br> <br>
 
 			<label for="countryEncount"><b>Country of Encounter: </b></label>
-      <input class="input-text" type="text" placeholder="Country of Encounter" name="countryEncount" value= "<?php echo $_POST['countryEncount']; ?>"> <br> <br>
+      <input class="input-text" type="text" placeholder="Country of Encounter" name="countryEncount" value= "<?php echo countryEncounter(); ?>"> <br> <br>
 
       <label for="pass"><b>Duration of Encounter (Hrs and Mins):</b></label>
-      <input class="input-text" type="text" placeholder="Duration of Encounter" name="durationhrsmins" value= "<?php echo $_POST['durationhrsmins']; ?>"> <br> <br>
+      <input class="input-text" type="text" placeholder="Duration of Encounter" name="durationhrsmins" value= "<?php echo durationHrMinsEncounter()?>"> <br> <br>
 
 			<label for="pass"><b>Duration of Encounter (Secs):</b></label>
-      <input class="input-text" type="text" placeholder="Duration of Encounter" name="durationsec" value= "<?php echo $_POST['durationsec']; ?>"> <br> <br>
+      <input class="input-text" type="text" placeholder="Duration of Encounter" name="durationsec" value= "<?php echo durationSecEncounter(); ?>"> <br> <br>
 
 			<label for="description"><b>Description of Encounter (*): </b></label>
-			<input class="input-desc" type="text" placeholder="Enter your description" name="description" value= "<?php echo $_POST['description']; ?>"> <br> <br>
+			<input class="input-desc" type="text" placeholder="Enter your description" name="description" value= "<?php echo descriptionEncounter(); ?>"> <br> <br>
 
 			<div class="container-login-buttons">
 				<div class="block-checkboxes">
@@ -224,21 +224,9 @@ function Valid()
 		$durationhrsminsEncounter = durationHrMinsEncounter();
 		$descriptionEncounter = descriptionEncounter();
 		$shapeOfUfo = shapeOfUfo();
-		$longitude = '1';
-		$latitude = '1';
-		$state = 'a';
-
-		echo $user . "</br>";
-		echo $datetimeEncounter . "</br>";
-		echo $cityEncounter . "</br>";
-		echo $countryEncounter . "</br>";
-		echo $durationsecEncounter . "</br>";
-		echo $durationhrsminsEncounter . "</br>";
-		echo $descriptionEncounter . "</br>";
-		echo $shapeOfUfo . "</br>";
-		echo $state . "</br>";
-		echo $latitude . "</br>";
-		echo $longitude . "</br>";
+		$longitude = '';
+		$latitude = '';
+		$state = '';
 
 		$stmt = $conn->prepare("INSERT INTO entries(username, datetime, city, state, country, shape, duration_seconds, duration_hrs_mins, comment, latitude, longitude) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 		$stmt->bind_param('sssssssssss',
@@ -269,6 +257,10 @@ function Valid()
 		print_r($stmt4->error_list);
 	}
 
+	if(Valid())
+	{
+		header('Location: posts.php');
+	}
 ?>
 <footer class="section-divider-footer">
 	<div class="container-footer">

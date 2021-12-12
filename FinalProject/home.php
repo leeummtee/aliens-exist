@@ -56,6 +56,7 @@ if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] == 1)
     $sql_statement = "SELECT * FROM entries";
     if($shape != '')
     {
+    echo $shape;
       $sql_statement .= $shape . " ORDER BY dateposted DESC LIMIT 6";
       $result_records = $conn->query($sql_statement);
       echo "<h1> Shapes </h1>";
@@ -63,14 +64,13 @@ if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] == 1)
         while($row = $result_records->fetch_assoc()) {
           echo "<br><br><a href=" . "'?link=" . $row["entryid"] . "'" . "<h3>Date Posted:" . $row["dateposted"]."</h3></a><br>";
           if(isset($_GET['link'])){
-            //echo "uh";
             $_SESSION['entryid'] = $_GET['link'];
             header("Location: details.php");
           }
         }
       }
     }
-    if($country != '')
+    if($country != '' && $country != "0")
     {
       $stmt = $conn->prepare("SELECT * FROM entries WHERE country = ? ORDER BY dateposted DESC LIMIT 6");
       $stmt->bind_param("s", $country);
