@@ -55,8 +55,6 @@
 				<li> Number of Upvotes: 0 </li>
 			</ul>
 
-
-
 			<div class="container-login-buttons">
 				<br>
 				<div class="test">

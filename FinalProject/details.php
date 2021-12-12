@@ -9,7 +9,7 @@
       <link href="css/main.css" rel="stylesheet">
   </head>
 
-  <body>
+  <body id="details">
     <nav>
       <!-- logo in the top left -->
       <div class="topnav">
@@ -89,35 +89,42 @@
     // echo $entry_id;
     $sql = "SELECT * FROM entries WHERE entryid =" . $entry_id;
 
-    // echo '<section class="container-posts">';
+    echo '<section class="container-profile">';
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         // output data of each row
         while($row = $result->fetch_assoc()) {
-            // echo '<div class="block-posts">';
-            echo "<h1>Date Posted:" . $row["dateposted"]."</h1><br>";
-            echo "Author: " . userValidation($row["username"])."<br>";
-            echo "Country: " . $row["country"]."<br>";
-            echo "City: " . $row["city"]."<br>";
-            echo "State: " . $row["state"]."<br>";
-            echo "Shape: " . $row["shape"]."<br>";
-            echo "Latitude: " . $row["latitude"]."<br>";
-            echo "Longitude: " . $row["longitude"]."<br>";
-            echo "Date and Time of Occurance: " . $row["datetime"]."<br>";
-            echo "Duration (secs): " . $row["duration_seconds"]."<br>";
-            echo "Duration (hrs and mins): " . $row["duration_hrs_mins"]."<br>";
-            echo "Description: " . $row["comment"]."<br>";
-            // echo "</div>";
-
-            // img
-            // echo '<div class="block-posts">';
-            // echo'<a href="#"><img src="imgs/ufo.webp" alt="ufo"></a>';
-            // echo '</div>';
+            echo '<div class="block-profile">';
+            echo "<h1>Date Posted:";
+            echo $row["dateposted"]."</h1><br>";
+            echo "<strong>Author</strong>: " . userValidation($row["username"])."<br>";
+            echo "<strong>Country:</strong> " . $row["country"]."<br>";
+            echo "<strong>City</strong>: " . $row["city"]."<br>";
+            echo "<strong>State:</strong> " . $row["state"]."<br>";
+            echo "<strong>Shape:</strong> " . $row["shape"]."<br>";
+            echo "<strong>Latitude:</strong> " . $row["latitude"]."<br>";
+            echo "<strong>Longitude:</strong> " . $row["longitude"]."<br>";
+            echo "<strong>Date and Time of Occurance:</strong> " . $row["datetime"]."<br>";
+            echo "<strong>Duration (secs): </strong>" . $row["duration_seconds"]."<br>";
+            echo "<strong>Duration (hrs and mins): </strong>" . $row["duration_hrs_mins"]."<br>";
+            echo "<strong>Description:</strong>" . $row["comment"]."<br>";
+            echo "</div>";
             }
         } else {
         echo "0 results";
     }
+    ?>
 
+    <div class="block-profile">
+      <img src="imgs/ufo2.1.png" alt="profile pic">
+    </div>
+  </section>
+
+  <h3 class="comments"> Comments </h3>
+
+    <?php
+
+    //comments
 
     $sql2 = "SELECT * FROM attached a
     INNER JOIN comment c

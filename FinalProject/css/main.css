@@ -3,93 +3,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 
-/* @mixin rectangle {
-  height: 2rem;
-  width: 10rem;
-} */
 
-/* @mixin project-listing-text{
-  z-index: 1;
-  padding-top: 10rem;
-} */
-
-/* @mixin detailed-view-margins {
-  margin-left: 10rem;
-  margin-right: 10rem;
-} */
-
-/* @mixin grey-hover-transition {
-  color: #808080;
-  transition-duration: 0.5s;
-} */
-
-/* @mixin flex-wrap-center{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-} */
-
-/*the container must be positioned relative:*/
-/* .custom-select {
-  position: relative;
-  font-family: Arial;
-} */
-
-/* .custom-select select {
-  display: none;
-  /*hide original SELECT element:*/
-/* }  */
-
-/* .select-selected {
-  background-color: DodgerBlue;
-} */
-
-/*style the arrow inside the select element:*/
-/* .select-selected:after {
-  position: absolute;
-  content: "";
-  top: 14px;
-  right: 10px;
-  width: 0;
-  height: 0;
-  border: 6px solid transparent;
-  border-color: #fff transparent transparent transparent;
-} */
-
-/*point the arrow upwards when the select box is open (active):*/
-/* .select-selected.select-arrow-active:after {
-  border-color: transparent transparent #fff transparent;
-  top: 7px;
-} */
-
-/*style the items (options), including the selected item:*/
-/* .select-items div,.select-selected {
-  color: #ffffff;
-  padding: 8px 16px;
-  border: 1px solid transparent;
-  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
-  cursor: pointer;
-  user-select: none;
-} */
-
-/*style items (options):*/
-/* .select-items {
-  position: absolute;
-  background-color: DodgerBlue;
-  top: 100%;
-  left: 0;
-  right: 0;
-  z-index: 99;
-} */
-
-/*hide the items when the select box is closed:*/
-/* .select-hide {
-  display: none;
+#details strong {
+  font-size: 1.5rem;
 }
 
-.select-items div:hover, .same-as-selected {
-  background-color: rgba(0, 0, 0, 0.1);
-} */
+#details h1 {
+  font-size: 3.5rem;
+}
+
 
 .nav-button {
   font-family: 'Nunito', sans-serif;
@@ -305,6 +227,20 @@
   justify-content:center;
   /* margin-left: -5rem;
   margin-right: -5rem; */
+}
+
+/* making sure there are only 2 divs per row for posts page */
+@media screen and (min-width: 1550px) {
+  #details .container-profile {
+    padding-left: 10rem;
+    padding-right: 10rem;
+  }
+}
+
+#details .container-profile {
+  padding-top: 5rem;
+  display: flex;
+  justify-content:center;
 }
 
 .container-profile p {
