@@ -59,7 +59,6 @@
     }
 
     if(isset($_POST['comment_desc']))
-    echo "yo";
 
     if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] == 1 && isset($_POST['comment_desc']))
     {
@@ -80,12 +79,6 @@
       $stmt3 = $conn->prepare("INSERT INTO attached(entryid, commentid) VALUES (?, ?)");
       $stmt3->bind_param("si", $entry_id, $comment_id);
       $stmt3->execute();
-
-      $stmt4 = $conn->prepare("UPDATE member
-        SET post_count = post_count + 1
-        WHERE username = ?");
-      $stmt4->bind_param("s", $user);
-      $stmt4 ->execute();
 
 
       //UPDATE member

@@ -155,7 +155,7 @@ $signup = "INSERT INTO member(username, post_count, password, last_name, phone_n
 if ($conn->query($signup) === TRUE) {
   echo "New record created successfully";
 	$_SESSION['username'] = userName();
-	header( "Location: posts.php" );
+	header( "Location: preferences.php" );
 } else {
   echo "Error: " . $signup . "<br>" . $conn->error;
 }

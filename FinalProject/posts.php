@@ -272,26 +272,26 @@ $sql .= " LIMIT " . $per_page . "  OFFSET " . $offset;
 $result = $conn->query($sql);
 $count = 0;
 
-echo '<section class="container-posts">';
+//echo '<section class="container-posts">';
 if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
       if($count < 10){
         // img
-        echo '<div class="block-posts">';
-        echo'<a href="#"><img src="imgs/ufo.webp" alt="ufo"></a>';
-        echo '</div>';
+//        echo '<div class="block-posts">';
+      //  echo'<a href="#"><img src="imgs/ufo.webp" alt="ufo"></a>';
+        //echo '</div>';
 
         // text
-        echo '<div class="block-posts">';
+      //  echo '<div class="block-posts">';
         echo "<br><br><a href=" . "'?link=" . $row["entryid"] . "'" . "<h3>Date Posted:" . $row["dateposted"]."</h3></a><br>";
-        echo "Author: " . userValidation($row["username"])."<br><br>";
-        echo '<input class="button-form" type="submit" value="View Details" name = "search"/>';
-        echo '</div>';
+      //  echo "Author: " . userValidation($row["username"])."<br><br>";
+      //    echo '<input class="button-form" type="submit" value="View Details" name = "search"/>';
+      //  echo '</div>';
         if(isset($_GET['link'])){
           //echo "uh";
           $_SESSION['entryid'] = $_GET['link'];
-          header( "Location: details.php" );
+          header("Location: details.php");
         }
         $count++;
         }
@@ -299,9 +299,6 @@ if ($result->num_rows > 0) {
   } else {
     echo "0 results";
   }
-echo '</section>';
-
-printURLs($page, $max_page);
 function printURLs($page,$max)
 {
   if($page == 0)
@@ -346,9 +343,10 @@ function printURLs($page,$max)
   }
   if(isset($_GET['page'])){
     $_SESSION['page'] = $_GET['page'];
-    header( "Location: posts.php" );
+    header("Location: posts.php");
   }
 }
+printURLs($page, $max_page);
 ?>
 </section>
 

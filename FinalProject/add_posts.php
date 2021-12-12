@@ -40,24 +40,27 @@
 
       <h1> Add a post. Voice out the truth. </h1>
 
-      <label for="lastname"><b>Date + Time of Encounter: </b></label>
-      <input class="input-text" type="text" placeholder="Enter Date + Time" name="firstname" value= "<?php firstName() ?>"> <br> <br>
+      <label for="datetime"><b>Date + Time of Encounter (*): </b></label>
+      <input class="input-text" type="text" placeholder="Enter Date + Time" name="datetime" value= "<?php echo $_POST['datetime']; ?>"> <br> <br>
 
-      <label for="user"><b>City of Encounter: </b></label>
-      <input class="input-text" type="text" placeholder="City of Encounter" name="user" value= "<?php userName() ?>"> <br> <br>
+      <label for="city"><b>City of Encounter (*): </b></label>
+      <input class="input-text" type="text" placeholder="City of Encounter" name="city" value= "<?php echo $_POST['city']; ?>"> <br> <br>
 
-			<label for="phoneNum"><b>Country of Encounter: </b></label>
-      <input class="input-text" type="text" placeholder="Country of Encounter" name="phoneNum" value= "<?php phoneNum() ?>"> <br> <br>
+			<label for="countryEncount"><b>Country of Encounter: </b></label>
+      <input class="input-text" type="text" placeholder="Country of Encounter" name="countryEncount" value= "<?php echo $_POST['countryEncount']; ?>"> <br> <br>
 
-      <label for="pass"><b>Duration of Encounter:</b></label>
-      <input class="input-text" type="password" placeholder="Duration of Encounter" name="psw" value= "<?php psw() ?>"> <br> <br>
+      <label for="pass"><b>Duration of Encounter (Hrs and Mins):</b></label>
+      <input class="input-text" type="text" placeholder="Duration of Encounter" name="durationhrsmins" value= "<?php echo $_POST['durationhrsmins']; ?>"> <br> <br>
 
-			<label for="description"><b>Description of Encounter: </b></label>
-			<input class="input-desc" type="text" placeholder="Enter your description" name="lastname" value= "<?php lastName() ?>"> <br> <br>
+			<label for="pass"><b>Duration of Encounter (Secs):</b></label>
+      <input class="input-text" type="text" placeholder="Duration of Encounter" name="durationsec" value= "<?php echo $_POST['durationsec']; ?>"> <br> <br>
+
+			<label for="description"><b>Description of Encounter (*): </b></label>
+			<input class="input-desc" type="text" placeholder="Enter your description" name="description" value= "<?php echo $_POST['description']; ?>"> <br> <br>
 
 			<div class="container-login-buttons">
 				<div class="block-checkboxes">
-					<p class="search">Ufo Shape:</p>
+					<p class="search">Ufo Shape (*):</p>
 					<input type="checkbox" id="fireball" name="fireball" value="fireball" <?php if(isset($_POST['fireball'])) echo 'checked="checked"'; ?>>
 					<label for="fireball">Fireball</label><br>
 					<input type="checkbox" id="disk" name="disk" value="disk"  <?php if(isset($_POST['disk'])) echo 'checked="checked"'; ?>>
@@ -67,7 +70,7 @@
 					<input type="checkbox" id="circle" name="circle" value="circle" <?php if(isset($_POST['circle'])) echo 'checked="checked"'; ?>>
 					<label for="circle">Circle</label><br>
 					<input type="checkbox" id="other" name="other" value="other" <?php if(isset($_POST['other'])) echo 'checked="checked"'; ?>>
-					<label for="other">Other</label><br></form>
+					<label for="other">Other</label><br>
 					<!-- <label class="posts-sort" for="sort-list">Sort by:</label> -->
 				</div>
 			</div>
@@ -75,7 +78,7 @@
 			<div class="container-login-buttons">
 				<br>
 				<div class="test">
-					<input class="button-form" type="submit" value="Sign Up" name = "signup"/>
+					<input class="button-form" type="submit" value="Post" name = "post_entry"/>
 				</div>
 			</div>
 
@@ -89,90 +92,183 @@
 <?php
 include_once("database.php");
 session_start();
-function firstName() {
-  if (isset($_POST['firstname'])){
-		return $_POST['firstname'];
-	}
-	return "";
-}
-echo firstName();
-function lastName() {
-  if (isset($_POST['lastname'])){
-		return $_POST['lastname'];
+function datetimeEncounter() {
+  if (isset($_POST['datetime'])){
+		return $_POST['datetime'];
 	}
 	return "";
 }
 
-function userName() {
-  if (isset($_POST['user'])){
-		return $_POST['user'];
+function countryEncounter() {
+  if (isset($_POST['countryEncount'])){
+		return $_POST['countryEncount'];
 	}
 	return "";
 }
 
-function phoneNum() {
-  if (isset($_POST['phoneNum'])){
-		return $_POST['phoneNum'];
+function cityEncounter() {
+  if (isset($_POST['city'])){
+		return $_POST['city'];
 	}
 	return "";
 }
 
-function email() {
-  if (isset($_POST['email'])){
-		return $_POST['email'];
+function durationHrMinsEncounter() {
+  if (isset($_POST['durationhrsmins'])){
+		return $_POST['durationhrsmins'];
+	}
+	return "";
+}
+function durationSecEncounter() {
+  if (isset($_POST['durationsec'])){
+		return $_POST['durationsec'];
+	}
+	return "";
+}
+function descriptionEncounter() {
+  if (isset($_POST['description'])){
+		return $_POST['description'];
 	}
 	return "";
 }
 
-function psw() {
-  if (isset($_POST['psw'])){
-		return $_POST['psw'];
-	}
-	return "";
-}
-
-function pswRepeat() {
-  if (isset($_POST['psw-repeat']))
-		return $_POST['psw-repeat'];
-	return "";
-}
-
-function valid()
+function checkDisk()
 {
-	$count = 0;
-	if(userName())
-		$count++;
-	if(firstName())
-		$count++;
-	if(lastName())
-		$count++;
-	if(phoneNum())
-		$count++;
-	if(email())
-		$count++;
-	if(psw())
-		$count++;
-	return $count;
+  if(empty($_POST['disk'])){
+    return "";
+  } else {
+    return "disk";
+  }
 }
-//echo valid();
-if(valid() >= 6){
-$signup = "INSERT INTO member(username, post_count, password, last_name, phone_num, first_name, email) VALUES(
-'" . userName() . "',
-'0',
-'" . pswRepeat() . "',
-'" . lastName() . "',
-'" . phoneNum() . "',
-'" . firstName() . "',
-'" . email() . "')";
 
-if ($conn->query($signup) === TRUE) {
-  echo "New record created successfully";
-	$_SESSION['username'] = userName();
-	header( "Location: posts.php" );
-} else {
-  echo "Error: " . $signup . "<br>" . $conn->error;
+function checkFireball()
+{
+  if(empty($_POST['fireball'])){
+    return "";
+  } else {
+    return "fireball";
+  }
 }
+
+function checkTriangle()
+{
+  if(empty($_POST['triangle'])){
+    return "";
+  } else {
+    return "triangle";
+  }
 }
+
+function checkCircle()
+{
+  if(empty($_POST['circle'])){
+    return "";
+  } else {
+    return "circle";
+  }
+}
+
+function checkOther()
+{
+  if(empty($_POST['other'])){
+    return "";
+  } else{
+    return "other";
+  }
+}
+
+function shapeOfUfo()
+{
+	if(checkDisk() != '')
+		return checkDisk();
+
+	if(checkFireball() != '')
+		return checkFireball();
+
+	if(checkTriangle() != '')
+		return checkTriangle();
+
+	if(checkCircle() != '')
+		return checkCircle();
+
+	if(checkOther() != '')
+		return checkOther();
+
+	return '';
+}
+
+function Valid()
+{
+	$counter = 0;
+	if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] == 1)
+		$counter++;
+	if(shapeOfUfo() != '')
+		$counter++;
+	if(datetimeEncounter() != '')
+		$counter++;
+	if(cityEncounter() != '')
+		$counter++;
+	if(descriptionEncounter() != '')
+		$counter++;
+
+	return $counter == 5;
+}
+
+
+	if(Valid()) {
+		$user = $_SESSION['username'];
+		$datetimeEncounter = datetimeEncounter();
+		$countryEncounter = countryEncounter();
+		$cityEncounter = cityEncounter();
+		$durationsecEncounter = '1sec';
+		$durationhrsminsEncounter = durationHrMinsEncounter();
+		$descriptionEncounter = descriptionEncounter();
+		$shapeOfUfo = shapeOfUfo();
+		$longitude = '1';
+		$latitude = '1';
+		$state = 'a';
+
+		echo $user . "</br>";
+		echo $datetimeEncounter . "</br>";
+		echo $cityEncounter . "</br>";
+		echo $countryEncounter . "</br>";
+		echo $durationsecEncounter . "</br>";
+		echo $durationhrsminsEncounter . "</br>";
+		echo $descriptionEncounter . "</br>";
+		echo $shapeOfUfo . "</br>";
+		echo $state . "</br>";
+		echo $latitude . "</br>";
+		echo $longitude . "</br>";
+
+		$stmt = $conn->prepare("INSERT INTO entries(username, datetime, city, state, country, shape, duration_seconds, duration_hrs_mins, comment, latitude, longitude) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+		$stmt->bind_param('sssssssssss',
+		$user,
+		$datetimeEncounter,
+		$cityEncounter,
+		$state,
+		$shapeOfUfo,
+		$countryEncounter,
+		$durationsecEncounter,
+		$durationhrsminsEncounter,
+		$descriptionEncounter,
+		$longitude,
+		$latitude);
+		$stmt->execute();
+
+
+		$entry_id = $conn->insert_id;
+		$stmt2 = $conn->prepare("INSERT INTO post_entry(username, entryid) VALUES (?, ?)");
+		$stmt2->bind_param("si", $user, $entry_id);
+		$stmt2->execute();
+
+		$stmt4 = $conn->prepare("UPDATE member
+			SET post_count = post_count + 1
+			WHERE username = ?");
+		$stmt4->bind_param("s", $user);
+		$stmt4 ->execute();
+		print_r($stmt4->error_list);
+	}
+
 ?>
 <footer class="section-divider-footer">
 	<div class="container-footer">
