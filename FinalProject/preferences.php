@@ -145,13 +145,15 @@ function howManyShapes()
         }
       }
     }
+    if($counter == 1)
+    {
+      $sql_statement .= ")";
+    }
+    if($sql_statement == " WHERE " || (checkFireball() && checkDisk() && checkTriangle() && checkCircle() && checkOther()))
+      $sql_statement = "";
     return $sql_statement;
   }
 
-function hasPref()
-{
-
-}
 if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] == 1)
 {
   $user = $_SESSION['username'];
@@ -224,6 +226,11 @@ if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] == 1)
     $stmt3 ->execute();
     print_r($stmt3->error_list);
   }
+}
+
+if(isset($_POST['setpref']))
+{
+  header('Location: home.php');
 }
 ?>
 

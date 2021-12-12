@@ -34,7 +34,7 @@
 
 	<section class="container-login">
 		<div class="block-edit">
-  	<form action="" method="post">
+  	<form action="" method="post" enctype="multipart/form-data">
 			<div class="container-login-logo">
 				<img class="logo-img" src="imgs/logo.png" alt="ufo logo">
 			</div>
@@ -42,30 +42,30 @@
       <div class="form-title">
           <h1> Edit your profile. </h1>
       </div>
+		</br>
+			<label for="lastname"><b>Profile Picture</b></label> </br>
+			<input type="file" name="file"> </br></br>
 
       <label for="lastname"><b>First Name</b></label>
-      <input class="input-text" type="text" placeholder="Enter First Name" name="firstname" value= "<?php firstName() ?>"> <br> <br>
+      <input class="input-text" type="text" placeholder="Enter First Name" name="firstname" value= "<?php echo firstName(); ?>"> <br> <br>
 
       <label for="lastname"><b>Last Name</b></label>
-      <input class="input-text" type="text" placeholder="Enter Last Name" name="lastname" value= "<?php lastName() ?>"> <br> <br>
+      <input class="input-text" type="text" placeholder="Enter Last Name" name="lastname" value= "<?php echo lastName(); ?>"> <br> <br>
 
       <label for="user"><b>Username</b></label>
-      <input class="input-text" type="text" placeholder="Enter Username" name="user" value= "<?php userName() ?>"> <br> <br>
+      <input class="input-text" type="text" placeholder="Enter Username" name="user" value= "<?php echo userName(); ?>"> <br> <br>
 
 			<label for="phoneNum"><b>Phone Number: </b></label>
-      <input class="input-text" type="text" placeholder="Enter Phone Number" name="phoneNum" value= "<?php phoneNum() ?>"> <br> <br>
-
-      <label for="email"><b>Email</b></label>
-      <input class="input-text" type="text" placeholder="Enter Email" name="email" value= "<?php email() ?>"> <br> <br>
+      <input class="input-text" type="text" placeholder="Enter Phone Number" name="phoneNum" value= "<?php echo phoneNum(); ?>"> <br> <br>
 
       <label for="pass"><b>Password</b></label>
-      <input class="input-text" type="password" placeholder="Enter Password" name="psw" value= "<?php psw() ?>"> <br> <br>
+      <input class="input-text" type="password" placeholder="Enter Password" name="psw" value= "<?php echo psw(); ?>"> <br> <br>
 
       <label for="pass-repeat"><b>Repeat Password</b></label>
-      <input class="input-text" type="password" placeholder="Repeat Password" name="psw-repeat" value= "<?php pswRepeat() ?>"><br> <br>
+      <input class="input-text" type="password" placeholder="Repeat Password" name="psw-repeat" value= "<?php echo pswRepeat(); ?>"><br> <br>
 
       <label for="lastname"><b>Your Bio: </b></label>
-      <input class="input-desc" type="text" placeholder="Enter Bio" name="lastname" value= "<?php lastName() ?>"> <br>
+      <input class="input-desc" type="text" placeholder="Enter Bio" name="bio" value= "<?php echo bio(); ?>"> <br>
 			<div class="container-login-buttons">
       	<input class="button-form" type="submit" value="Submit Changes" name = "signup"/>
 			</div>
@@ -108,9 +108,9 @@ function phoneNum() {
 	return "";
 }
 
-function email() {
-  if (isset($_POST['email'])){
-		return $_POST['email'];
+function bio() {
+  if (isset($_POST['bio'])){
+		return $_POST['bio'];
 	}
 	return "";
 }
@@ -127,43 +127,71 @@ function pswRepeat() {
 		return $_POST['psw-repeat'];
 	return "";
 }
+$user = $_SESSION['username'];
+if(firstName() != ""){
+	$user = $_SESSION['username'];
+	$firstname = firstName();
+$stmt2 = $conn->prepare( "UPDATE member
+SET first_name = ?
+WHERE username = ?");
+$stmt2->bind_param("ss", $firstname, $user);
+$stmt2->execute();
+}
 
-function valid()
-{
-	$count = 0;
-	if(userName())
-		$count++;
-	if(firstName())
-		$count++;
-	if(lastName())
-		$count++;
-	if(phoneNum())
-		$count++;
-	if(email())
-		$count++;
-	if(psw())
-		$count++;
-	return $count;
+if(lastName() != ""){
+	$user = $_SESSION['username'];
+	$lastname = lastName();
+$stmt2 = $conn->prepare( "UPDATE member
+SET last_name = ?
+WHERE username = ?");
+$stmt2->bind_param("ss", $lastname, $user);
+$stmt2->execute();
 }
-//echo valid();
-if(valid() >= 6){
-$signup = "INSERT INTO member(username, post_count, password, last_name, phone_num, first_name, email) VALUES(
-'" . userName() . "',
-'0',
-'" . pswRepeat() . "',
-'" . lastName() . "',
-'" . phoneNum() . "',
-'" . firstName() . "',
-'" . email() . "')";
 
-if ($conn->query($signup) === TRUE) {
-  echo "New record created successfully";
-	$_SESSION['username'] = userName();
-	header( "Location: posts.php" );
-} else {
-  echo "Error: " . $signup . "<br>" . $conn->error;
+
+if(phoneNum() != ""){
+	$user = $_SESSION['username'];
+	$phone = phoneNum();
+$stmt2 = $conn->prepare( "UPDATE member
+SET phone_num = ?
+WHERE username = ?");
+$stmt2->bind_param("ss", $phone, $user);
+$stmt2->execute();
 }
+
+if(psw() != "" && psw() == pswRepeat()){
+	$user = $_SESSION['username'];
+	$pass = psw();
+$stmt2 = $conn->prepare( "UPDATE member
+SET password = ?
+WHERE username = ?");
+$stmt2->bind_param("ss", $pass, $user);
+$stmt2->execute();
 }
+
+if(bio() != ""){
+	$user = $_SESSION['username'];
+	$bio = bio();
+$stmt2 = $conn->prepare( "UPDATE member
+SET bio = ?
+WHERE username = ?");
+$stmt2->bind_param("ss", $bio, $user);
+$stmt2->execute();
+}
+
+if(userName() != ""){
+	$user = $_SESSION['username'];
+	$username = userName();
+	$stmt2 = $conn->prepare( "UPDATE member
+	SET username = ?
+	WHERE username = ?");
+	$stmt2->bind_param("ss", $username, $user);
+	if($stmt2->execute()){
+		$_SESSION['username'] = $username;
+	}
+}
+
+
 ?>
 <footer class="section-divider-footer">
 	<div class="container-footer">

@@ -221,6 +221,10 @@ function howManyShapes()
       }
     }
   }
+  if($counter == 1)
+  {
+    $sql_statement .= ")";
+  }
 
   if($sql_statement == " WHERE " || (checkFireball() && checkDisk() && checkTriangle() && checkCircle() && checkOther()))
     $sql_statement = "";
