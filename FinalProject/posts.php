@@ -43,8 +43,7 @@
             <select class="padding" name="sort-list" id="sort-list">
             <option value="dateposted_newest" <?php echo (isset($_POST['dateposted_newest']) && $_POST['dateposted_newest'] == 'Newest to oldest') ? 'selected' : ''; ?>>Newest to oldest</option>
             <option value="dateposted_oldest"  <?php echo (isset($_POST['dateposted_oldest']) && $_POST['dateposted_oldest'] == 'Oldest to newest') ? 'selected' : ''; ?>>Oldest to newest</option>
-            <option value="most_popular" <?php echo (isset($_POST['most_popular']) && $_POST['most_popular'] == 'Most popular') ? 'selected' : ''; ?>>Most popular</option>
-            <option value="least_popular" <?php echo (isset($_POST['least_popular']) && $_POST['least_popular'] == 'Least popular') ? 'selected' : ''; ?>>Least popular</option>
+
             </select>
             <br>
             <div class="test">
@@ -82,7 +81,6 @@ session_start();
 if(!isset($_SESSION['page'])){
   $_SESSION['page'] = 0;
 }
-//echo "page" . $_SESSION['page'];
 
 $sql = "SELECT * FROM entries";
 
@@ -259,6 +257,7 @@ function userValidation($name)
 $entry_records = "SELECT COUNT(*) AS num_of_records FROM entries";
 $num_of_entry_records;
 $page = $_SESSION['page'];
+
 $per_page = 10;
 $offset=$page*$per_page; //2
 $result_records = $conn->query($entry_records);
@@ -269,7 +268,6 @@ if ($result_records->num_rows > 0) {
   }
 }
 $max_page = $num_of_entry_records / $per_page;
-
 //$_SESSION['sqlstatement'] = $sql;
 $sql .= " LIMIT " . $per_page . "  OFFSET " . $offset;
   //echo $sql;
@@ -303,6 +301,7 @@ if ($result->num_rows > 0) {
   } else {
     echo "0 results";
   }
+
 function printURLs($page,$max)
 {
   if($page == 0)
@@ -317,23 +316,9 @@ function printURLs($page,$max)
 
     }
     echo "<a href=" . "'?page=" . $page + 1 . "'>></a><br>";
-    echo "<a href=" . "'?page=" . $max . "'>>></a><br>";
-  } else if($page == $max)
-  {
-    for ($x = $max; $x <= $max - 3; $x--) {
-      if($x-1 == $_SESSION['page'])
-      {
-        echo $x . "<br>";
-      } else {
-        echo "<a href=" . "'?page=" . $x-1 . "'>" . $x . "</a><br>";
-      }
-    }
-    echo "<a href=" . "'?page=" . $page - 1 . "'><</a><br>";
-    echo "<a href=" . "'?page=0'><<</a><br>";
   } else
   {
     echo "<a href=" . "'?page=" . $page + 1 . "'>></a><br>";
-    echo "<a href=" . "'?page=" . $max . "'>>></a><br>";
     for ($x = $page; $x <= $page + 2; $x++) {
       if($x-1 == $_SESSION['page'])
       {
@@ -343,11 +328,10 @@ function printURLs($page,$max)
       }
     }
     echo "<a href=" . "'?page=" . $page - 1 . "'><</a><br>";
-    echo "<a href=" . "'?page=0'><<</a><br>";
   }
+  $_SESSION['page'] = $_GET['page'];
   if(isset($_GET['page'])){
     $_SESSION['page'] = $_GET['page'];
-    header("Location: posts.php");
   }
 }
 printURLs($page, $max_page);
