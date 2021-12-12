@@ -95,9 +95,16 @@
   .container-for-you {
     padding-right: 15rem;
     padding-left: 15rem;
-
   }
 }
+
+@media screen and (min-width: 2222px) {
+  .container-for-you {
+    padding-right: 30rem;
+    padding-left: 30rem;
+  }
+}
+
 
 .block-posts-text {
   flex-grow: 0 100%;
@@ -355,6 +362,11 @@
 .block-for-you p{
   font-size: 1.5rem;
   margin-top: -1.5rem;
+}
+
+.block-comments {
+  padding-left
+  /* text-align: center; */
 }
 
 .home-listing {

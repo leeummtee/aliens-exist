@@ -127,8 +127,6 @@
 						$shapes .= $circle;
 					}
 
-<<<<<<< HEAD
-=======
 					if(strpos($shape, "disk") != false){
 						$shapes .= $disk;
 					}
@@ -161,7 +159,6 @@
 			echo "</ul>";
 			?>
 
->>>>>>> main
 			<div class="container-login-buttons">
 				<br>
 				<div class="test">
