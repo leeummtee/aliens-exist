@@ -23,6 +23,11 @@ if(isset($_POST['login'])) //If user is not logged in and attempts to log in, fi
     }
     exit($user . "=" . $pass);
 }
+
+if(isset($_POST['signup']))
+{
+  header("Location: signup.php");
+}
 ?>
 <html>
 <head>
@@ -78,7 +83,7 @@ if(isset($_POST['login'])) //If user is not logged in and attempts to log in, fi
 
         <div class="container-login-buttons">
           <input class="button-form" type =  "button" value = "Login" id = "login"/>
-          <input href="signup.php" class="button-form" type =  "button" value = "Sign Up" id = "sign up"/>
+          <input class="button-form" type="submit" value="Sign Up" name = "signup"/>
         </div>
     </div>
       </form>
