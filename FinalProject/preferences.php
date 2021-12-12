@@ -210,11 +210,6 @@ if(isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] == 1) //Checking if
     $city = city();
     $upvotes = upvotes();
     $shapes = howManyShapes();
-    echo $user . "</br>";
-    echo $country . "</br>";
-    echo $city . "</br>";
-    echo $upvotes . "</br>";
-    echo $shapes . "</br>";
 
     $stmt2 = $conn->prepare("INSERT INTO preferences(country, city, shape, upvotes) VALUES (?, ?, ?, ?)");
     $stmt2->bind_param("ssss", $country, $city, $shapes, $upvotes);
